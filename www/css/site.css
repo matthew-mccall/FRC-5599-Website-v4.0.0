@@ -1,0 +1,12 @@
+@font-face {
+    font-family: bladerunner;
+    src: url("../fonts/BLADRMF_.TTF");
+}
+
+.sentinels-font {
+    font-family: bladerunner;
+}
+
+body, html {
+    height: 100%;
+}
