@@ -39,18 +39,42 @@
                     <a class="dropdown-item" href="gallery">Gallery</a>
                     <a class="dropdown-item" href="more">More...</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="signin">Sign In<a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="dropdown-item btn" data-toggle="modal" data-target="#exampleModalCenter">
+                        Sign in
+                    </button>
                 </div>
             </div>
             <a class="nav-link" href="contact">Contact Us</a>
         </div>
         <form class="form-inline ml-auto">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Coming Soon!" aria-label="Search" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Search!" aria-label="Search" aria-describedby="basic-addon1">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" id="button-addon2">Go</button>
+                    <button class="btn btn-primary" type="button" id="button-addon2"><i data-feather="search" class="d-block m-auto"></i></button>
                 </div>
             </div>
         </form>
     </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign In</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+                <button type="button" class="btn btn-primary">Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
