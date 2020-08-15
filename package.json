@@ -9,6 +9,9 @@
   "author": "Matthew McCall",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "feather-icons": "^4.28.0",
+    "mongodb": "^3.6.0"
   }
 }
