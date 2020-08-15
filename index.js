@@ -7,6 +7,7 @@ app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
+    //TODO: Query database for information and pass that into main page.
     res.render('index.html')
 })
 
