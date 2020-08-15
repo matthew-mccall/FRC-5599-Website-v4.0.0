@@ -9,15 +9,15 @@
 
         <%- include('components/nav.html'); -%>
 
-        <div class="parallax" style="background-image: url('img/47473700712_4cf00694f0_k.jpg');">
+        <div class="parallax" style="background-image: url('img/32584077677_b02b1d4707_k.jpg');">
             <div class="row h-100">
                 <div class="col my-auto">
 
                     <div class="d-none d-sm-none d-md-block">
-                        <div class="d-flex justify-content-center">
+                        <div class="container">
                             <div class="acryllic-dark text-light p-4 rounded-lg text-center">
                                 <h1 class="sentinels-font display-1">The Sentinels</h1>
-                                <p class="lead">Competitive Robotics Team | FRC 5599 02</p>
+                                <p class="lead">Competitive Robotics Team | FRC 5599</p>
                                 <p class="text-muted">Scroll Down</p>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                     <div class="d-md-none d-lg-none d-xl-none">
                         <div class="container">
                             <div class="acryllic-dark text-light p-4 rounded-lg text-center">
-                                <h1 class="sentinels-font display-4 ">The Sentinels</h1>
+                                <h1 class="sentinels-font display-4">The Sentinels</h1>
                                 <p class="lead">Competitive Robotics Team | FRC 5599</p>
                                 <p class="text-muted">Scroll Down</p>
                             </div>
@@ -39,7 +39,6 @@
         </div>
 
         <div class="container py-5">
-            <!--TODO: Fetch dynamically-->
             <p>The Sentinels are Benjamin N. Cardozo High School's Robotics Team. We compete in various annual robotics competitions against high schools across the globe, raising awareness for Science, Technology, Engineering, and Mathematics (STEM), along with teaching students aspects behind business and marketing, logistics, and media. We also participate in various community and school events.</p>
             <p>FRC Team 5599, participates in the annual FIRST® Robotics Competition (FRC). In a six week time span, we raise funds, design, and construct a fully-functional robot.</p>
         </div>
@@ -49,7 +48,7 @@
                 <div class="col my-auto mh-25">
 
                     <div class="d-none d-sm-none d-md-block">
-                        <div class="d-flex justify-content-center">
+                        <div class="container">
                             <div class="acryllic-dark text-light p-4 rounded-lg text-center">
                                 <h1 class="sentinels-font display-1">Our History</h1>
                             </div>
@@ -76,6 +75,10 @@
 
         <%- include('components/footer.html'); -%>
         <%- include('components/scripts.html'); -%>
+
+        <script>
+            //TODO: Send GET request to check for announcements.
+        </script>
 
     </body>
 
