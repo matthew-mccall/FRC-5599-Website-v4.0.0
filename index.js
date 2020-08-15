@@ -1,18 +1,24 @@
 const express = require('express')
-const app = express()
+const app = module.exports = express();
 const port = process.env.PORT | 3000
-const fs = require('fs')
 
 app.use(express.static('www'))
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
-    try {
-        const data = fs.readFileSync('www/pages/index.html', 'utf8')
-        res.send(data)
-    } catch (err) {
-        console.error(err)
-        res.send("An error has occurred")
-    }
+    res.render('index.html')
+})
+
+app.use(function (req, res, next) {
+    res.status(404)
+    res.render('404.html')
+})
+
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500)
+    res.render('500.html')
 })
 
 app.listen(port, () => {
