@@ -3,10 +3,58 @@
     src: url("../fonts/BLADRMF_.TTF");
 }
 
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 .sentinels-font {
     font-family: bladerunner;
 }
 
-body, html {
-    height: 100%;
+.parallax { 
+    background-image: url("img/logo/bulldog.png");
+
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.parallax-dark {
+    background-image: url("img/logo/bulldog.png");
+
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.acryllic {
+    background-color: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: saturate(180%) blur(10px); 
+    -webkit-backdrop-filter: saturate(180%) blur(10px); 
+    opacity: 100%;
+}
+
+.acryllic-dark {
+    background-color: rgba(20, 20, 20, 0.8) !important;
+    backdrop-filter: saturate(180%) blur(20px); 
+    -webkit-backdrop-filter: saturate(180%) blur(20px); 
+    opacity: 100%;
+}
+
+/* Disable for mobile browsers*/
+
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+    background-attachment: scroll;
+    }
 }
