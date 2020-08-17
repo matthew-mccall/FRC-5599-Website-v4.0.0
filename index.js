@@ -10,8 +10,6 @@ const robots = require('./robots')
 const app = express();
 const port = process.env.PORT | 3000
 
-exports.app = app
-
 app.use(
     bodyParser.urlencoded({
         extended: true
