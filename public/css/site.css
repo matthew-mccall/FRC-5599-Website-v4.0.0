@@ -26,7 +26,17 @@ body, html {
 }
 
 .translucent-holder::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.translucent-btn {
+    color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transition: 0.5s;
+}
+
+.translucent-btn:hover {
+    background-color: rgb(255, 255, 255) !important;
 }
 
 @supports ((backdrop-filter: saturate(180%) blur(10px)) or (-webkit-backdrop-filter: saturate(180%) blur(10px))) {
