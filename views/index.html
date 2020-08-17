@@ -9,6 +9,8 @@
 
         <%- include('components/nav.html'); -%>
 
+        <% if (announcement.display) { %>
+
         <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -19,13 +21,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p id="AnnouncementContent">Content not available</p>
+                        <p id="AnnouncementContent"> <%= announcement.message %> </p>
+                        <% if (announcement.hasLink) { %>
                         <br>
-                        <a id="AnnouncementLink" class="d-none" href="">Click here!</a>
+                        <a id="AnnouncementLink" class="d-none" href="<%= announcement.link %> ">Click here!</a>
+                        <% } %>
                     </div>
                 </div>
             </div>
         </div>
+
+        <% } %>
 
         <div class="parallax" style="background-image: url('img/32584077677_b02b1d4707_k.jpg');">
             <div class="row h-100">
@@ -53,7 +59,7 @@
         </div>
 
         <div class="container py-5">
-            <p> <%= desc %> </p>
+            <p> <%= team.desc %> </p>
         </div>
 
         <div class="parallax" style="background-image: url('img/45831474165_fe5980aa1f_k.jpg');">
@@ -79,25 +85,20 @@
         </div>
 
         <div class="container py-5">
-            <p> <%= history %> </p>
+            <p> <%= team.history %> </p>
         </div>
 
         <%- include('components/footer.html'); -%>
         <%- include('components/scripts.html'); -%>
 
-        <script>
-            $.get("announcement", function (rawData) {
-                var data = JSON.parse(rawData);
-                if (data.display) {
-                    $('#AnnouncementContent').html(data.message);
-                    if (data.hasLink) {
-                        $('#AnnouncementLink').removeClass('d-none');
-                        $('#AnnouncementLink').attr('href', data.link);
-                    }
-                    $('#ModalCenter').modal();
-                }
-            });
+        <% if (announcement.display) { %>
+
+        <script type="text/javascript">
+            $('#ModalCenter').modal('show');
         </script>
+
+        <% } %>
+
     </body>
 
 </html>
