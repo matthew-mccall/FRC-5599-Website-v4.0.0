@@ -18,7 +18,7 @@ app.use(
     })
 )
 app.use(bodyParser.json())
-app.use(express.static('www'))
+app.use(express.static('public'))
 
 app.engine('.html', require('ejs').__express);
 
