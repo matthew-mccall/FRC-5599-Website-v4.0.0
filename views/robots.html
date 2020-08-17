@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('components/head.html'); -%>
+    </head>
+
+    <body>
+
+        <%- include('components/nav.html'); -%>
+
+        <% robots.forEach(function(robot) { %>
+
+        <div class="parallax" style="background-image: url('img/robots/<%= robot.name %>.jpg');">
+            <div class="row h-100">
+                <div class="col my-auto">
+
+                    <div class="d-none d-sm-none d-md-block">
+                        <div class="container">
+                            <div class="bg-dark acryllic-dark text-light p-4 rounded-lg text-center">
+                                <div class="d-none d-sm-none d-md-block">
+                                    <h3><%= robot.year %></h3>
+                                    <h1 class="display-1"><%= robot.name %></h1>
+                                </div>
+
+                                <!--Smaller title for mobile-->
+                                <div class="d-md-none d-lg-none d-xl-none">
+                                    <h3><%= robot.year %> </h3>
+                                    <h1><%= robot.name %></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <p> <%= robot.desc %> </p>
+        </div>
+
+        <% }) %>
+
+        <%- include('components/footer.html'); -%>
+        <%- include('components/scripts.html'); -%>
+
+    </body>
+
+</html>

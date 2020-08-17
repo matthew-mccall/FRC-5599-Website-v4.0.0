@@ -1,0 +1,29 @@
+{
+    "robots": [
+        {
+            "year": "2019",
+            "name": "Voltron",
+            "desc": "Voltron is The Sentinel's robot for the FRC 2019 Destination: Deep Space competition! Voltron is able to collect and place both hatches and cargo, and can reach level 3 of the rocket."
+        },
+        {
+            "year": "2018",
+            "name": "Quicksilver",
+            "desc": "Quick Silver was Team 5599's robot for the 2018 season, FIRST Power Up! Quick Silver was capable of easily intaking power cubes, and efficiently placing them in the scale, even on it's highest and furthest points, and switches."
+        },
+        {
+            "year": "2017",
+            "name": "HAL 5700",
+            "desc": "HAL 5700 was Team 5599's robot for the 2017 season, FIRST STEAMworks. HAL 5700 was capable of receiving gears, placing them on the airships, using the return, and scaling the airship. It's omniwheels and design allowed it to manuever easily across fuel-filled fields."
+        },
+        {
+            "year": "2016",
+            "name": "The Hound",
+            "desc": "The Hound was Team 5599's robot for the 2016 season, FIRST Stronghold. The Hound was capable of doing all the defenses excluding the Sally Port and Drawbridge. It was also able to shoot the high goal and low goal. It's pneumatic wheels allowed for great off-terrain maneuverability, the sound of it's shooting motors was ferocious, and it's pneumatic arm could punch through sheet-rock."
+        },
+        {
+            "year": "2015",
+            "name": "Pied Piper",
+            "desc": "Pied Piper was Team 5599's robot for the 2015 season, FIRST Recycle Rush. Pied Piper was capable of lifting and maneuvering totes and garbage bins. This robot helped the team win the Rookie Inspiration Award at the New York City Regional Competition and the Future Glory Award at the Brunswick Eruption Off-season competition."
+        }
+    ]
+}
