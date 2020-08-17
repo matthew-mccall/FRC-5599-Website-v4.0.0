@@ -9,6 +9,24 @@
 
         <%- include('components/nav.html'); -%>
 
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLongTitle">Announcement!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="AnnouncementContent">Content not available</p>
+                        <br>
+                        <a id="AnnouncementLink" class="d-none" href="">Click here!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="parallax" style="background-image: url('img/32584077677_b02b1d4707_k.jpg');">
             <div class="row h-100">
                 <div class="col my-auto">
@@ -66,9 +84,18 @@
         <%- include('components/scripts.html'); -%>
 
         <script>
-            //TODO: Send GET request to check for announcements.
+            $.get("announcement", function (rawData) {
+                var data = JSON.parse(rawData);
+                if (data.display) {
+                    $('#AnnouncementContent').html(data.message);
+                    if (data.hasLink) {
+                        $('#AnnouncementLink').removeClass('d-none');
+                        $('#AnnouncementLink').attr('href', data.link);
+                    }
+                    $('#ModalCenter').modal();
+                }
+            });
         </script>
-
     </body>
 
 </html>
