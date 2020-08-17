@@ -1,20 +1,24 @@
 const fs = require('fs')
 
-var rawData;
-var data;
+var rawTeamData;
+var rawAnnouncementData;
+var teamData;
+var announcementData;
 
 exports.index = function (req, res) {
 
     try {
-        rawData = fs.readFileSync('data/team.json', 'utf8')
-        data = JSON.parse(rawData)
+        rawTeamData = fs.readFileSync('data/team.json', 'utf8')
+        rawAnnouncementData = fs.readFileSync('data/announcement.json', 'utf8')
+        teamData = JSON.parse(rawTeamData)
+        announcementData = JSON.parse(rawAnnouncementData)
     } catch (err) {
         console.error(err)
     }
 
     res.render('index', {
-        desc: data.desc,
-        history: data.history
+        team: teamData,
+        announcement: announcementData
     });
 
 }
