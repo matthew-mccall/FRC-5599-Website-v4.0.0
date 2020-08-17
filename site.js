@@ -12,7 +12,7 @@ exports.index = function (req, res) {
         console.error(err)
     }
 
-    res.render('index.html', {
+    res.render('index', {
         desc: data.desc,
         history: data.history
     });

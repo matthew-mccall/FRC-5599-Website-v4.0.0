@@ -1,3 +1,3 @@
 exports.index = function (req, res) {
-    res.render('social.html')
+    res.render('social')
 }
