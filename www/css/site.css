@@ -38,7 +38,10 @@ body, html {
 }
 
 .acryllic {
-    background-color: rgba(255, 255, 255, 0.25); 
+    background-color: rgba(255, 255, 255, 0.8); 
+
+    /* TODO: use solid color when backdrop-filter is not available */
+
     backdrop-filter: saturate(180%) blur(10px); 
     -webkit-backdrop-filter: saturate(180%) blur(10px); 
     opacity: 100%;
@@ -46,6 +49,9 @@ body, html {
 
 .acryllic-dark {
     background-color: rgba(20, 20, 20, 0.8) !important;
+
+    /* TODO: use solid color when backdrop-filter is not available */
+
     backdrop-filter: saturate(180%) blur(20px); 
     -webkit-backdrop-filter: saturate(180%) blur(20px); 
     opacity: 100%;
