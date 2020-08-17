@@ -6,6 +6,7 @@ const competitions = require('./competitions')
 const users = require('./users')
 const announcements = require('./announcement')
 const robots = require('./robots')
+const projects = require('./projects')
 
 const app = express();
 const port = process.env.PORT | 3000
@@ -26,6 +27,7 @@ app.get('/', site.index)
 app.get('/competitions', competitions.index)
 app.get('/social', social.index)
 app.get('/robots', robots.index)
+app.get('/projects', projects.index)
 app.get('/announcement', announcements.getAnnouncement)
 
 app.post('/signin', users.signin)
