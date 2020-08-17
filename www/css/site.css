@@ -25,40 +25,25 @@ body, html {
 
 }
 
-.parallax-dark {
-    background-image: url("img/logo/bulldog.png");
-
-    height: 100%; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.translucent-holder::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
-.acryllic {
-    background-color: rgba(255, 255, 255, 0.8); 
-
-    /* TODO: use solid color when backdrop-filter is not available */
-
-    backdrop-filter: saturate(180%) blur(10px); 
-    -webkit-backdrop-filter: saturate(180%) blur(10px); 
-    opacity: 100%;
+@supports ((backdrop-filter: saturate(180%) blur(10px)) or (-webkit-backdrop-filter: saturate(180%) blur(10px))) {
+    .acryllic-light {
+        background-color: rgba(255, 255, 255, 0.8) !important;     
+        backdrop-filter: saturate(180%) blur(10px); 
+        -webkit-backdrop-filter: saturate(180%) blur(10px); 
+    }
+    
+    .acryllic-dark {
+        background-color: rgba(20, 20, 20, 0.8) !important;    
+        backdrop-filter: saturate(180%) blur(20px); 
+        -webkit-backdrop-filter: saturate(180%) blur(20px); 
+    }
 }
 
-.acryllic-dark {
-    background-color: rgba(20, 20, 20, 0.8) !important;
-
-    /* TODO: use solid color when backdrop-filter is not available */
-
-    backdrop-filter: saturate(180%) blur(20px); 
-    -webkit-backdrop-filter: saturate(180%) blur(20px); 
-    opacity: 100%;
-}
-
-/* Disable for mobile browsers*/
-
+/* Disable parallax for mobile browsers*/
 @media only screen and (max-device-width: 1366px) {
     .parallax {
     background-attachment: scroll;
