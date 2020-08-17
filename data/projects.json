@@ -1,0 +1,53 @@
+{
+    "team": [
+        {
+            "title": "Robot2020",
+            "desc": "Official code for 2020's Robot for FIRST Infinite Recharge."
+        },
+        {
+            "title": "Robot2020-SparkMax",
+            "desc": "Basic template code for a drive train using SparkMax motor controllers."
+        },
+        {
+            "title": "Robot2020-VictorSPX",
+            "desc": "Basic template code for a drive train using VictorSPX motor controllers."
+        },
+        {
+            "title": "Java-Controller-Wrappers",
+            "desc": "Contains all the Java wrappers for various controllers and joystick controllers, including the XBox360, Logitech Attack 3, Logitech Extreme 3D, and more."
+        },
+        {
+            "title": "Robot2019",
+            "desc": "Code for 2019's Robot Voltron for FIRST Deep Space!"
+        },
+        {
+            "title": "Robot2018",
+            "desc": "Code for 2018's Quicksilver Robot for FIRST Power Up! (VS Code Import)"
+        },
+        {
+            "title": "Robot2016_Eclipse",
+            "desc": "Code for 2016's THE HOUND Robot for FIRST Stronghold"
+        },
+        {
+            "title": "Robot2015_Eclipse",
+            "desc": "Code for 2015's PIED PIPER Robot for FIRST Recycle Rush"
+        }
+    ],
+    "member": [
+        {
+            "title": "Chat-Bot",
+            "desc": "",
+            "link": "",
+            "contributors": [
+                {
+                    "name": "Matthew McCall",
+                    "link": "https://mccall.app"
+                },
+                {
+                    "name": "Victor Chen",
+                    "link": ""
+                }
+            ]
+        }
+    ]
+}
