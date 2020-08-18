@@ -1,6 +1,6 @@
 const fs = require('fs')
 var express = require('express')
-var projects = express.Router();
+var projects = express.Router()
 
 var rawData;
 var data;
@@ -18,4 +18,4 @@ projects.get('/', function (req, res) {
     })
 })
 
-module.exports = projects;
+module.exports = projects

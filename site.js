@@ -6,7 +6,7 @@ var teamData;
 var announcementData;
 
 var express = require('express')
-var site = express.Router();
+var site = express.Router()
 
 site.get('/', function (req, res) {
 
@@ -22,8 +22,8 @@ site.get('/', function (req, res) {
     res.render('index', {
         team: teamData,
         announcement: announcementData
-    });
+    })
 
 })
 
-module.exports = site;
+module.exports = site

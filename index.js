@@ -1,14 +1,15 @@
 const express = require('express')
 
-var app = module.exports = express();
+var app = module.exports = express()
 const port = process.env.PORT | 3000
 
-app.engine('.html', require('ejs').__express);
-app.set('view engine', 'html');
+app.engine('.html', require('ejs').__express)
+app.set('view engine', 'html')
 
 app.use(express.static('public'))
 
 app.use('/', require('./site'))
+app.use('/members', require('./members'))
 app.use('/robots', require('./robots'))
 app.use('/competitions', require('./competitions'))
 app.use('/projects', require('./projects'))

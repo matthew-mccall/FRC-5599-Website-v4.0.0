@@ -1,6 +1,6 @@
 const fs = require('fs')
 var express = require('express')
-var robots = express.Router();
+var robots = express.Router()
 
 var rawData;
 var data;
@@ -16,7 +16,7 @@ robots.get('/', function (req, res) {
 
     res.render('robots', {
         robots: data.robots
-    });
+    })
 
 })
 
