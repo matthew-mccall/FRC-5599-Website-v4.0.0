@@ -31,13 +31,15 @@ app.use(function (err, req, res, next) {
 const server = app.listen(3000, () => console.log(`Server listening at port ${port}`))
 
 process.on('SIGTERM', () => {
+    console.log('\nTerminating server')
     server.close(() => {
-        console.log('\nServer terminated')
+        console.log('Server terminated')
     })
 })
 
 process.on('SIGINT', () => {
+    console.log('\nTerminating server')
     server.close(() => {
-        console.log('\nServer terminated')
+        console.log('Server terminated')
     })
 })
