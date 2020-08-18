@@ -37,6 +37,25 @@
 
             <h1>Mentors</h1>
 
+            <% if (member.isMentor) { %>
+            <div class="col-6 col-sm-4 col-md-3 p-2">
+                <img src="img/placeholders/person.jpeg" class="card-img-top" alt="...">
+                <div class="card">
+                    <div class="card-body">
+                        <h4><%= member.name %> </h4>
+                        <p class="text-secondary"><%= member.division[0].toUpperCase() + member.division.substr(1) %> Division</p>
+                        <% if (member.desc != null) { %>
+                        <p><%= member.desc %></p>
+                        <% } %>
+                    </div>
+                    <div class="card-footer">
+                        Joined: <%= member.joined %>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            <% }); %>
+
             <h1>Alumni</h1>
 
         </div>
