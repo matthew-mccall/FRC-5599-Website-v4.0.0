@@ -1,4 +1,4 @@
-# 5599-Website
+# FRC 5599 Website v4.0.0
 This is the repository for the redesign of FRC 5599 BNCHS Sentinel's website.
 ## How to test:
 1. Download the project and unzip it.
