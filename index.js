@@ -27,6 +27,16 @@ app.use(function (err, req, res, next) {
     res.render('500')
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+const server = app.listen(3000, () => console.log(`Server listening at port ${port}`))
+
+process.on('SIGTERM', () => {
+    server.close(() => {
+        console.log('\nServer terminated')
+    })
+})
+
+process.on('SIGINT', () => {
+    server.close(() => {
+        console.log('\nServer terminated')
+    })
 })
