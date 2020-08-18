@@ -1,10 +1,11 @@
 const fs = require('fs')
+var express = require('express')
+var projects = express.Router();
 
 var rawData;
 var data;
 
-exports.index = function (req, res) {
-
+projects.get('/', function (req, res) {
     try {
         rawData = fs.readFileSync('data/projects.json', 'utf8')
         data = JSON.parse(rawData)
@@ -14,6 +15,7 @@ exports.index = function (req, res) {
 
     res.render('projects', {
         team: data.team
-    });
+    })
+})
 
-}
+module.exports = projects;

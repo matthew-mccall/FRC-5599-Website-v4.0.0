@@ -1,34 +1,19 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-const site = require('./site')
-const social = require('./social')
-const competitions = require('./competitions')
-const users = require('./users')
-const robots = require('./robots')
-const projects = require('./projects')
 
-const app = express();
+var app = module.exports = express();
 const port = process.env.PORT | 3000
 
-app.use(
-    bodyParser.urlencoded({
-        extended: true
-    })
-)
-app.use(bodyParser.json())
-app.use(express.static('public'))
-
 app.engine('.html', require('ejs').__express);
-
 app.set('view engine', 'html');
 
-app.get('/', site.index)
-app.get('/competitions', competitions.index)
-app.get('/social', social.index)
-app.get('/robots', robots.index)
-app.get('/projects', projects.index)
+app.use(express.static('public'))
 
-app.post('/signin', users.signin)
+app.use('/', require('./site'))
+app.use('/robots', require('./robots'))
+app.use('/competitions', require('./competitions'))
+app.use('/projects', require('./projects'))
+app.use('/social', require('./social'))
+app.use('/users', require('./users'))
 
 // Maybe extract these into separate files too?
 app.use(function (req, res, next) {

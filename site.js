@@ -5,7 +5,10 @@ var rawAnnouncementData;
 var teamData;
 var announcementData;
 
-exports.index = function (req, res) {
+var express = require('express')
+var site = express.Router();
+
+site.get('/', function (req, res) {
 
     try {
         rawTeamData = fs.readFileSync('data/team.json', 'utf8')
@@ -21,4 +24,6 @@ exports.index = function (req, res) {
         announcement: announcementData
     });
 
-}
+})
+
+module.exports = site;

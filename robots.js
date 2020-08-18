@@ -1,9 +1,11 @@
 const fs = require('fs')
+var express = require('express')
+var robots = express.Router();
 
 var rawData;
 var data;
 
-exports.index = function (req, res) {
+robots.get('/', function (req, res) {
 
     try {
         rawData = fs.readFileSync('data/robots.json', 'utf8')
@@ -16,4 +18,6 @@ exports.index = function (req, res) {
         robots: data.robots
     });
 
-}
+})
+
+module.exports = robots;
