@@ -49,9 +49,33 @@ const server = app.listen(3000, function () {
 process.on('SIGTERM', shutdown)
 process.on('SIGINT', shutdown)
 
+let connections = [];
+
+server.on('connection', function (connection) {
+    connections.push(connection);
+    connection.on('close', () => connections = connections.filter(curr => curr !== connection));
+});
+
 function shutdown() {
     console.log('\nTerminating server.')
     server.close(function () {
         console.log('Server terminated')
+        process.exit(0)
     })
+
+    connections.forEach(function (curr) {
+        curr.end()
+    })
+
+    setTimeout(function () {
+        connections.forEach(function (curr) {
+            curr.destroy()
+        })
+    }, 5000)
+
+    setTimeout(function () {
+        console.error('Could not close connections in time, forcefully shutting down');
+        process.exit(1);
+    }, 10000)
+
 }
