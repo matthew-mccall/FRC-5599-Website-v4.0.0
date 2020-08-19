@@ -2,9 +2,12 @@
 This is the repository for the redesign of FRC 5599 BNCHS Sentinel's website.
 ## How to test:
 1. Download the project and unzip it.
-2. Run `npm install` to install all necessary packages.
-3. Run `node .` to run the website.
-4. Browse to 127.0.0.1:3000 to view the website.
+2. Install [Redis](https://redis.io/).
+3. Run `redis-server`.
+4. Change your working directory to the unzipped folder.
+5. Run `npm install` to install all necessary packages.
+6. Run `node .` to run the website.
+7. Browse to 127.0.0.1:3000 or localhost:3000 to view the website.
 # Notes:
 Several pages rely on the MongoDB database referenced in code. The objects stored in the database are expected to be in this format:
 ```js
