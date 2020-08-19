@@ -4,6 +4,8 @@ var crypto = require('crypto')
 const bodyParser = require('body-parser')
 var MongoClient = require('mongodb').MongoClient
 var url = "mongodb://localhost:27017/userdb"
+var session = require('express-session');
+const dashboard = require('./dashboard');
 
 signin.use(
     bodyParser.urlencoded({
@@ -24,6 +26,11 @@ signin.get('/', function (req, res) {
 })
 
 signin.post('/', function (req, res) {
+
+    if (req.session.user) {
+        res.redirect('/dashboard')
+    }
+
     MongoClient.connect(url, function (err, db) {
         if (err) throw err
         var dbo = db.db("userdb")
@@ -33,7 +40,8 @@ signin.post('/', function (req, res) {
             if (result.length == 1) {
                 const sentPassword = crypto.pbkdf2Sync(req.body.password, result[0].salt, 100000, 64, 'sha512').toString('hex')
                 if (sentPassword == result[0].password) {
-                    res.send("yay")
+                    req.session.user = result[0]
+                    res.redirect('/dashboard')
                 } else {
                     res.render('signin', {
                         userbad: false,

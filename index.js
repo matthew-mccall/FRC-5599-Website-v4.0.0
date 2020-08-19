@@ -1,4 +1,8 @@
 const express = require('express')
+var session = require('express-session');
+var redis = require("redis").createClient();
+
+var RedisStore = require('connect-redis')(session);
 
 var app = module.exports = express()
 const port = process.env.PORT | 3000
@@ -8,6 +12,13 @@ app.set('view engine', 'html')
 
 app.use(express.static('public'))
 
+app.use(session({
+    resave: false, // don't save session if unmodified
+    saveUninitialized: false, // don't create session until something stored
+    secret: 'keyboard cat',
+    store: new RedisStore({ host: 'localhost', port: 6379, client: redis })
+}));
+
 app.use('/', require('./site'))
 app.use('/members', require('./members'))
 app.use('/robots', require('./robots'))
@@ -15,6 +26,7 @@ app.use('/competitions', require('./competitions'))
 app.use('/projects', require('./projects'))
 app.use('/social', require('./social'))
 app.use('/signin', require('./signin'))
+app.use('/dashboard', require('./dashboard'))
 
 // Maybe extract these into separate files too?
 app.use(function (req, res, next) {
