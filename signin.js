@@ -17,12 +17,12 @@ signin.get('/', function (req, res) {
 
     if (req.session.user) {
         res.redirect('dashboard')
+    } else {
+        res.render('signin', {
+            userbad: false,
+            passbad: false
+        })
     }
-
-    res.render('signin', {
-        userbad: false,
-        passbad: false
-    })
 })
 
 signin.post('/', function (req, res) {
