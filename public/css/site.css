@@ -32,7 +32,7 @@ body, html {
 .translucent-btn {
     color: rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.2) !important;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 
 .translucent-btn:hover {
