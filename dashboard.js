@@ -9,7 +9,7 @@ dashboard.get('/', function (req, res) {
             name: req.session.user.name
         })
     } else {
-        res.redirect('/')
+        res.redirect('/signin')
     }
 
 })
