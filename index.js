@@ -28,6 +28,7 @@ app.use('/competitions', require('./competitions'))
 app.use('/projects', require('./projects'))
 app.use('/social', require('./social'))
 app.use('/signin', require('./signin'))
+app.use('/forgot', require('./forgot'))
 app.use('/dashboard', require('./dashboard'))
 
 // Maybe extract these into separate files too?
