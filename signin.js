@@ -4,8 +4,6 @@ var crypto = require('crypto')
 const bodyParser = require('body-parser')
 var MongoClient = require('mongodb').MongoClient
 var url = "mongodb://localhost:27017/userdb"
-var session = require('express-session');
-const dashboard = require('./dashboard');
 
 signin.use(
     bodyParser.urlencoded({
