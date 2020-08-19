@@ -49,9 +49,7 @@ signin.post('/', function (req, res) {
                     passbad: false
                 })
             } else {
-
                 //We should not have more than one entries of the same username
-
                 res.status(500)
                 res.render('500')
             }
