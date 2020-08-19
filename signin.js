@@ -15,7 +15,9 @@ signin.use(bodyParser.json())
 
 signin.get('/', function (req, res) {
 
-    console.log(req.params)
+    if (req.session.user) {
+        res.redirect('dashboard')
+    }
 
     res.render('signin', {
         userbad: false,
@@ -47,7 +49,11 @@ signin.post('/', function (req, res) {
                     passbad: false
                 })
             } else {
-                res.send("we have a problem")
+
+                //We should not have more than one entries of the same username
+
+                res.status(500)
+                res.render('500')
             }
             db.close()
         })
