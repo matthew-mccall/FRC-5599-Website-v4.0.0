@@ -1,4 +1,5 @@
 const express = require('express')
+const crypto = require('crypto')
 var session = require('express-session');
 var redis = require("redis").createClient();
 
@@ -15,8 +16,8 @@ app.use(express.static('public'))
 app.use(session({
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't create session until something stored
-    secret: 'keyboard cat',
-    store: new RedisStore({ host: 'localhost', port: 6379, client: redis })
+    secret: crypto.randomBytes(8).toString(),
+    store: new RedisStore({ client: redis })
 }));
 
 app.use('/', require('./site'))
@@ -46,6 +47,7 @@ process.on('SIGTERM', () => {
     console.log('\nTerminating server')
     server.close(() => {
         console.log('Server terminated')
+        process.exit(0)
     })
 })
 
@@ -53,5 +55,6 @@ process.on('SIGINT', () => {
     console.log('\nTerminating server')
     server.close(() => {
         console.log('Server terminated')
+        process.exit(0)
     })
 })
