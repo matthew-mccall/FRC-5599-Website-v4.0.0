@@ -1,20 +1,29 @@
 var express = require('express')
+var signin = express.Router();
 var crypto = require('crypto')
 const bodyParser = require('body-parser')
-
 var MongoClient = require('mongodb').MongoClient
-var users = express.Router()
 var url = "mongodb://localhost:27017/userdb"
 
-users.use(
+signin.use(
     bodyParser.urlencoded({
         extended: true
     })
 )
 
-users.use(bodyParser.json())
+signin.use(bodyParser.json())
 
-users.post('/signin', function (req, res) {
+signin.get('/', function (req, res) {
+
+    console.log(req.params)
+
+    res.render('signin', {
+        userbad: false,
+        passbad: false
+    })
+})
+
+signin.post('/', function (req, res) {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err
         var dbo = db.db("userdb")
@@ -44,4 +53,4 @@ users.post('/signin', function (req, res) {
     })
 })
 
-module.exports = users
+module.exports = signin;

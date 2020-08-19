@@ -14,7 +14,7 @@ app.use('/robots', require('./robots'))
 app.use('/competitions', require('./competitions'))
 app.use('/projects', require('./projects'))
 app.use('/social', require('./social'))
-app.use('/users', require('./users'))
+app.use('/signin', require('./signin'))
 
 // Maybe extract these into separate files too?
 app.use(function (req, res, next) {
