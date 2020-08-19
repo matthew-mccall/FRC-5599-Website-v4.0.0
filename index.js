@@ -1,6 +1,7 @@
 const express = require('express')
 const crypto = require('crypto')
 var session = require('express-session');
+const { RedisClient } = require('redis');
 var redis = require("redis").createClient();
 
 var RedisStore = require('connect-redis')(session);
@@ -41,18 +42,16 @@ app.use(function (err, req, res, next) {
     res.render('500')
 })
 
-const server = app.listen(3000, () => console.log(`Server listening at port ${port}`))
-
-process.on('SIGTERM', () => {
-    console.log('\nTerminating server')
-    server.close(() => {
-        console.log('Server terminated')
-    })
+const server = app.listen(3000, function () {
+    console.log(`Server listening at port ${port}`)
 })
 
-process.on('SIGINT', () => {
-    console.log('\nTerminating server')
-    server.close(() => {
+process.on('SIGTERM', shutdown)
+process.on('SIGINT', shutdown)
+
+function shutdown() {
+    console.log('\nTerminating server.')
+    server.close(function () {
         console.log('Server terminated')
     })
-})
+}
