@@ -26,11 +26,6 @@ signin.get('/', function (req, res) {
 })
 
 signin.post('/', function (req, res) {
-
-    if (req.session.user) {
-        res.redirect('/dashboard')
-    }
-
     MongoClient.connect(url, function (err, db) {
         if (err) throw err
         var dbo = db.db("userdb")

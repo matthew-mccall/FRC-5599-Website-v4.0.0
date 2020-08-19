@@ -47,7 +47,6 @@ process.on('SIGTERM', () => {
     console.log('\nTerminating server')
     server.close(() => {
         console.log('Server terminated')
-        process.exit(0)
     })
 })
 
@@ -55,6 +54,5 @@ process.on('SIGINT', () => {
     console.log('\nTerminating server')
     server.close(() => {
         console.log('Server terminated')
-        process.exit(0)
     })
 })
