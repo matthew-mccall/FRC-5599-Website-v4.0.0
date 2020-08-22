@@ -16,7 +16,7 @@ signin.use(bodyParser.json())
 signin.get('/', function (req, res) {
 
     if (req.session.user) {
-        res.redirect('dashboard')
+        res.redirect('/profile')
     } else {
         res.render('signin', {
             userbad: false,
@@ -36,7 +36,7 @@ signin.post('/', function (req, res) {
                 const sentPassword = crypto.pbkdf2Sync(req.body.password, result[0].salt, 100000, 64, 'sha512').toString('hex')
                 if (sentPassword == result[0].password) {
                     req.session.user = result[0]
-                    res.redirect('/dashboard')
+                    res.redirect('/profile')
                 } else {
                     res.render('signin', {
                         userbad: false,
