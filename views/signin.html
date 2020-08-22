@@ -41,18 +41,9 @@
                             </div>
                             <% } %>
                         </div>
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember credentials</label>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <a class="btn btn-outline-secondary w-100" href="/forgot">Forgot Password</a>
-                            </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary w-100">Sign In</button>
-                            </div>
-                        </div>
+                        <p class="text-muted">Your credentials are automatically remembered. You must explicity press "Sign Out" on the next page to clear them from this device.</p>
+                        <a class=" btn btn-outline-secondary mr-3" href="/forgot">Forgot Password <i data-feather="help-circle" class="ml-2"></i></a>
+                        <button type="submit" class="btn btn-primary">Sign In <i data-feather="log-in" class="ml-2"></i></button>
                     </form>
                 </div>
             </div>
