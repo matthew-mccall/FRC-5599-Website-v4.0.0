@@ -1,7 +1,7 @@
 const express = require('express')
 const crypto = require('crypto')
+var helmet = require('helmet')
 var session = require('express-session');
-const { RedisClient } = require('redis');
 var redis = require("redis").createClient();
 
 var RedisStore = require('connect-redis')(session);
@@ -13,11 +13,17 @@ app.engine('.html', require('ejs').__express)
 app.set('view engine', 'html')
 
 app.use(express.static('public'))
+app.use(helmet())
 
 app.use(session({
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't create session until something stored
     secret: crypto.randomBytes(8).toString(),
+    name: 'sessionId',
+    cookie: {
+        secure: true,
+        httpOnly: true,
+    },
     store: new RedisStore({ client: redis })
 }));
 

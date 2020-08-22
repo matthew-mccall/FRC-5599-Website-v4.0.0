@@ -14,7 +14,9 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "feather-icons": "^4.28.0",
+    "helmet": "^4.1.0",
     "mongodb": "^3.6.0",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "synk": "0.0.2"
   }
 }
