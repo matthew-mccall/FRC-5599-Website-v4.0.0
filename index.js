@@ -31,6 +31,7 @@ app.use('/signin', require('./signin'))
 app.use('/forgot', require('./forgot'))
 app.use('/dashboard', require('./dashboard'))
 app.use('/profile', require('./profile'))
+app.use('/signout', require('./signout'))
 
 // Maybe extract these into separate files too?
 app.use(function (req, res, next) {
