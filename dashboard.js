@@ -1,4 +1,5 @@
 var express = require('express')
+const asynclib = require('./asynclib')
 var MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
 const fs = require('fs')
@@ -6,11 +7,16 @@ var dashboard = express.Router();
 
 var url = "mongodb://localhost:27017/userdb"
 
-var rawTeamData;
-var rawAnnouncementData;
-var teamData;
 var announcementData;
-var members;
+
+const getData = async function (req, res) {
+    res.render('dashboard', {
+        user: req.session.user,
+        team: JSON.parse(await asynclib.readFile('data/team.json')),
+        announcement: JSON.parse(await asynclib.readFile('data/team.json')),
+        members: await asynclib.queryDB({}, url, "userdb", "users")
+    })
+}
 
 dashboard.use(
     bodyParser.urlencoded({
@@ -28,31 +34,7 @@ dashboard.get('/', function (req, res) {
             res.redirect('profile')
             return;
         }
-
-        try {
-            rawTeamData = fs.readFileSync('data/team.json', 'utf8')
-            rawAnnouncementData = fs.readFileSync('data/announcement.json', 'utf8')
-            teamData = JSON.parse(rawTeamData)
-            announcementData = JSON.parse(rawAnnouncementData)
-        } catch (err) {
-            console.error(err)
-        }
-
-        MongoClient.connect(url, function (err, db) {
-            if (err) throw err
-            var dbo = db.db("userdb")
-            dbo.collection("users").find({}).toArray(function (err, result) {
-                if (err) throw err
-                members = result;
-                db.close()
-                res.render('dashboard', {
-                    user: req.session.user,
-                    team: teamData,
-                    announcement: announcementData,
-                    members: members
-                })
-            })
-        })
+        getData(req, res)
     } else {
         res.redirect('/signin')
     }
@@ -61,38 +43,30 @@ dashboard.get('/', function (req, res) {
 
 dashboard.post('/', function (req, res) {
 
-    if (req.session.user == undefined) {
+    if (!req.session.user) {
         res.redirect('/signin')
         return;
     }
 
     if (req.body.announcementMessage) {
         announcementData.message = req.body.announcementMessage
-        try {
-            fs.writeFileSync('data/announcement.json', JSON.stringify(announcementData))
-        } catch (err) {
-            console.error(err)
-        }
+        fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
+            res.redirect('/500')
+        })
     }
 
     if (req.body.announcementDisplay) {
         announcementData.display = req.body.announcementDisplay
-        try {
-            fs.writeFileSync('data/announcement.json', JSON.stringify(announcementData))
-        } catch (err) {
-            console.error(err)
-        }
+        fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
+            res.redirect('/500')
+        })
     } else {
         announcementData.display = false;
-        fs.writeFileSync('data/announcement.json', JSON.stringify(announcementData))
+        fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
+            res.redirect('/500')
+        })
     }
-
-    res.render('dashboard', {
-        user: req.session.user,
-        team: teamData,
-        announcement: announcementData,
-        members: members
-    })
+    getData(req, res)
 })
 
 module.exports = dashboard;

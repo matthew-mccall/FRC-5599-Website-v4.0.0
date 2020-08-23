@@ -1,22 +1,16 @@
-const fs = require('fs')
 var express = require('express')
 var robots = express.Router()
-
-var rawData;
-var data;
+const asynclib = require('./asynclib')
 
 robots.get('/', function (req, res) {
 
-    try {
-        rawData = fs.readFileSync('data/robots.json', 'utf8')
-        data = JSON.parse(rawData)
-    } catch (err) {
-        console.error(err)
+    const getData = async function () {
+        res.render('robots', {
+            robots: JSON.parse(await asynclib.readFile('data/robots.json')).robots,
+        })
     }
 
-    res.render('robots', {
-        robots: data.robots
-    })
+    getData()
 
 })
 
