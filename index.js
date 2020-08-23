@@ -43,7 +43,6 @@ app.use('/signout', require('./signout'))
 app.use('/404', require('./404'))
 app.use('/500', require('./500'))
 
-// Maybe extract these into separate files too?
 app.use(function (req, res, next) {
     res.redirect('/404')
 })
