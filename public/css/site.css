@@ -6,22 +6,7 @@
 body, html {
     height: 100%;
     overflow-x: hidden;
-}
-
-p, label, input, nav, a, div, button {
-    font-family: 'Poppins', sans-serif;
-}
-
-p {
-    line-height: 2;
-}
-
-.small {
-    line-height: 1.2;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .sentinels-font {
