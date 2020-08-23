@@ -18,10 +18,10 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="d-none d-sm-block">Username</label>
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><i data-feather="user" class="d-block m-auto"></i></span>
+                                        <div class="input-group-prepend mr-0">
+                                            <span class="input-group-text translucent-field border-0 text-light" id="basic-addon1"><i data-feather="user" class="d-block m-auto"></i></span>
                                         </div>
-                                        <input name="username" type="text" class="form-control <% if (userbad) { %> is-invalid <% } %>" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                                        <input name="username" type="text" class="form-control translucent-field border-0 text-light <% if (userbad) { %> is-invalid <% } %>" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
                                     </div>
                                     <% if (userbad) { %>
                                     <div class="text-danger">
@@ -32,10 +32,10 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="d-none d-sm-block">Password</label>
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon2"><i data-feather="lock" class="d-block m-auto"></i></span>
+                                        <div class="input-group-prepend mr-0">
+                                            <span class="input-group-text translucent-field border-0 text-light" id="basic-addon2"><i data-feather="lock" class="d-block m-auto"></i></span>
                                         </div>
-                                        <input name="password" type="password" class="form-control <% if (passbad) { %> is-invalid <% } %>" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" required>
+                                        <input name="password" type="password" class="form-control translucent-field border-0 text-light <% if (passbad) { %> is-invalid <% } %>" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" required>
                                     </div>
                                     <% if (passbad) { %>
                                     <div class="text-danger">
@@ -44,8 +44,8 @@
                                     <% } %>
                                 </div>
                                 <p class="text-muted small">Your credentials are automatically remembered. You must explicity press "Sign Out" on the next page to clear them from this device.</p>
-                                <a class=" btn btn-outline-light mr-3 mb-3" href="/forgot">Forgot Password <i data-feather="help-circle" class="ml-2"></i></a>
-                                <button type="submit" class="btn btn-primary">Sign In <i data-feather="log-in" class="ml-2"></i></button>
+                                <a class=" btn btn-outline-light mr-3 mt-3" href="/forgot">Forgot Password <i data-feather="help-circle" class="ml-2"></i></a>
+                                <button type="submit" class="btn btn-primary mt-3">Sign In <i data-feather="log-in" class="ml-2"></i></button>
                             </form>
                         </div>
                     </div>
