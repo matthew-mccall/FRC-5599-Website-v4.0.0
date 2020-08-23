@@ -84,16 +84,39 @@
                 <p> <%= team.history %> </p>
             </div>
 
-            <%- include('components/footer.html'); -%>
-            <%- include('components/scripts.html'); -%>
+            <div class="parallax" style="background-image: url('img/46632722835_14ca5fa131_k.jpg');">
+                <div class="row h-100">
+                    <div class="col my-auto mh-25">
+                        <div class="container">
+                            <div class="bg-dark acryllic-dark text-light p-4 rounded-lg">
+                                <h1>Subscribe to our newsletter</h1>
+                                <form action="/newsletter" method="POST">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend mr-0">
+                                                <span class="input-group-text translucent-field text-light border-0" id="basic-addon1"><i data-feather="mail" class="d-block m-auto"></i></span>
+                                            </div>
+                                            <input name="email" type="email" class="form-control translucent-field border-0 text-light" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Subscribe <i data-feather="bell" class="ml-2"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <% if (announcement.display) { %>
+                <%- include('components/footer.html'); -%>
+                <%- include('components/scripts.html'); -%>
 
-            <script type="text/javascript">
-                $('#ModalCenter').modal('show');
-            </script>
+                <% if (announcement.display) { %>
 
-            <% } %>
+                <script type="text/javascript">
+                    $('#ModalCenter').modal('show');
+                </script>
+
+                <% } %>
 
     </body>
 
