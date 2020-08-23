@@ -55,45 +55,50 @@
                             <form action="/dashboard" method="POST">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="John Doe" value="<%= member.name %>">
+                                    <input type="text" class="form-control" placeholder="John Doe" value="<%= member.name %>" required>
                                     <small class="text-muted">Changing member's name will update their username.</small>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" class="form-control" placeholder="John Doe" value="<%= member.username %>" readonly>
+                                    <input type="text" class="form-control" value="<%= member.username %>" readonly>
                                     <small class="text-muted">For reference only, usernames are generated automatically.</small>
                                 </div>
                                 <div class="form-group">
+                                    <label>User ID</label>
+                                    <input type="text" class="form-control" value="<%= member._id %>" readonly>
+                                    <small class="text-muted">For reference only, User IDs are generated automatically.</small>
+                                </div>
+                                <div class="form-group">
                                     <label>Email address</label>
-                                    <input type="email" class="form-control" placeholder="name@example.com" value="<%= member.email %>">
+                                    <input type="email" class="form-control" placeholder="name@example.com" value="<%= member.email %>" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="mechanics" <% if (member.division == "mechanics") { %> checked <% } %>>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="mechanics" <% if (member.division == "mechanics") { %> checked <% } %> required>
                                         <label class="form-check-label">
                                             Mechanics
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="electronics" <% if (member.division == "electronics") { %> checked <% } %>>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="electronics" <% if (member.division == "electronics") { %> checked <% } %> required>
                                         <label class="form-check-label">
                                             Electronics
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" <% if (member.division == "programming") { %> checked <% } %>>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" <% if (member.division == "programming") { %> checked <% } %> required>
                                         <label class="form-check-label">
                                             Programming
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" <% if (member.division == "marketing") { %> checked <% } %>>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" <% if (member.division == "marketing") { %> checked <% } %> required>
                                         <label class="form-check-label">
                                             Marketing
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" <% if (member.division == "cad") { %> checked <% } %>>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" <% if (member.division == "cad") { %> checked <% } %> required>
                                         <label class="form-check-label">
                                             CAD
                                         </label>
@@ -117,13 +122,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Year joined</label>
-                                    <input type="number" class="form-control" placeholder="2020" value="<%= member.joined %>">
+                                    <input type="number" class="form-control" placeholder="1970" value="<%= member.joined %>" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </form>
-                        </div>
-                        <div class="card-footer">
-                            <div class="small text-muted"><%= member._id %></div>
                         </div>
                     </div>
                     <% } %>
@@ -136,39 +138,39 @@
                             <form>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="John Doe" required>
+                                    <input type="text" class="form-control" placeholder="John Doe" required name="newMemberName">
                                 </div>
                                 <div class="form-group">
                                     <label>Email address</label>
-                                    <input type="email" class="form-control" placeholder="name@example.com" required>
+                                    <input type="email" class="form-control" placeholder="name@example.com" required name="newMemberEmail">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="mechanics" required>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="mechanics" required name="newMemberDivision">
                                         <label class="form-check-label">
                                             Mechanics
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="electronics" required>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="electronics" required name="newMemberDivision">
                                         <label class="form-check-label">
                                             Electronics
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" required>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" required name="newMemberDivision">
                                         <label class="form-check-label">
                                             Programming
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" required>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" required name="newMemberDivision">
                                         <label class="form-check-label">
                                             Marketing
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" required>
+                                        <input class="form-check-input" type="radio" name="memberDivision" value="programming" required name="newMemberDivision">
                                         <label class="form-check-label">
                                             CAD
                                         </label>
@@ -176,29 +178,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Description</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Describe the new person."></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Describe the new person." name="newMemberDesc"></textarea>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="defaultCheck1">
+                                    <input class="form-check-input" type="checkbox" id="defaultCheck1" name="newMemberrBoard">
                                     <label class="form-check-label" for="defaultCheck1">Board Member</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="defaultCheck1">
+                                    <input class="form-check-input" type="checkbox" id="defaultCheck1" name="newMemberMentor">
                                     <label class="form-check-label" for="defaultCheck1">Mentor</label>
                                 </div>
                                 <div class="form-check pb-3">
-                                    <input class="form-check-input" type="checkbox" id="defaultCheck1">
+                                    <input class="form-check-input" type="checkbox" id="defaultCheck1" name="newMemberAlumni">
                                     <label class="form-check-label" for="defaultCheck1">Alumni</label>
                                 </div>
                                 <div class="form-group">
                                     <label>Year joined</label>
-                                    <input type="number" class="form-control" placeholder="2020" required>
+                                    <input type="number" class="form-control" placeholder="1970" required name="newMemberYear">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add user</button>
                             </form>
-                        </div>
-                        <div class="card-footer">
-                            <div class="small text-muted">¯\_(ツ)_/¯</div>
                         </div>
                     </div>
                 </div>
