@@ -1,6 +1,5 @@
 const express = require('express')
 const crypto = require('crypto')
-var helmet = require('helmet')
 var session = require('express-session');
 var redis = require("redis").createClient();
 
@@ -13,17 +12,20 @@ app.engine('.html', require('ejs').__express)
 app.set('view engine', 'html')
 
 app.use(express.static('public'))
-app.use(helmet())
 
 app.use(session({
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't create session until something stored
     secret: crypto.randomBytes(8).toString(),
     name: 'sessionId',
-    cookie: {
-        secure: true,
-        httpOnly: true,
-    },
+
+    // TODO: Mandate HTTP in production
+
+    //cookie: {
+    //    secure: true,
+    //    httpOnly: true
+    //},
+
     store: new RedisStore({ client: redis })
 }));
 
@@ -38,17 +40,17 @@ app.use('/forgot', require('./forgot'))
 app.use('/dashboard', require('./dashboard'))
 app.use('/profile', require('./profile'))
 app.use('/signout', require('./signout'))
+app.use('/404', require('./404'))
+app.use('/500', require('./500'))
 
 // Maybe extract these into separate files too?
 app.use(function (req, res, next) {
-    res.status(404)
-    res.render('404')
+    res.redirect('/404')
 })
 
 app.use(function (err, req, res, next) {
     console.error(err.stack)
-    res.status(500)
-    res.render('500')
+    res.redirect('/500')
 })
 
 const server = app.listen(3000, function () {
