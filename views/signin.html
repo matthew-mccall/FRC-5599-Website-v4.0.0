@@ -13,13 +13,13 @@
                 <div class="col my-auto">
                     <div class="container">
                         <div class="bg-dark acryllic-dark text-light p-5 rounded-lg">
-                            <h1>Sign In</h1>
+                            <h1 class="d-none d-sm-block">Sign In</h1>
                             <form action="/signin" method="POST">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Username</label>
+                                    <label for="exampleInputEmail1" class="d-none d-sm-block">Username</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><i data-feather="at-sign" class="d-block m-auto"></i></span>
+                                            <span class="input-group-text" id="basic-addon1"><i data-feather="user" class="d-block m-auto"></i></span>
                                         </div>
                                         <input name="username" type="text" class="form-control <% if (userbad) { %> is-invalid <% } %>" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
                                     </div>
@@ -30,7 +30,7 @@
                                     <% } %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
+                                    <label for="exampleInputPassword1" class="d-none d-sm-block">Password</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon2"><i data-feather="lock" class="d-block m-auto"></i></span>
@@ -43,8 +43,8 @@
                                     </div>
                                     <% } %>
                                 </div>
-                                <p class="text-muted">Your credentials are automatically remembered. You must explicity press "Sign Out" on the next page to clear them from this device.</p>
-                                <a class=" btn btn-outline-light mr-3" href="/forgot">Forgot Password <i data-feather="help-circle" class="ml-2"></i></a>
+                                <p class="text-muted small">Your credentials are automatically remembered. You must explicity press "Sign Out" on the next page to clear them from this device.</p>
+                                <a class=" btn btn-outline-light mr-3 mb-3" href="/forgot">Forgot Password <i data-feather="help-circle" class="ml-2"></i></a>
                                 <button type="submit" class="btn btn-primary">Sign In <i data-feather="log-in" class="ml-2"></i></button>
                             </form>
                         </div>

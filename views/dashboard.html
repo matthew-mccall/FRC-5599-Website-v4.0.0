@@ -44,10 +44,10 @@
             <div class="py-3">
                 <h1>Members</h1>
                 <p class="text-muted">You can only manage members in your division. <i>(For the time being)</i></p>
-                <div class="d-flex flex-nowrap" style="overflow-x: scroll;">
+                <div class="d-flex flex-wrap">
                     <% members.forEach(function (member) { %>
                     <% if (member.division == user.division) { %>
-                    <div class="card mr-3">
+                    <div class="card mr-3 mb-3">
                         <div class="card-header">
                             <h4> <%= member.name %> </h4>
                         </div>
@@ -130,7 +130,7 @@
                     </div>
                     <% } %>
                     <% }) %>
-                    <div class="card">
+                    <div class="card mr-3 mb-3">
                         <div class="card-header">
                             <h4> New user </h4>
                         </div>
