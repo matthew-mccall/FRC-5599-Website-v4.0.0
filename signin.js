@@ -31,16 +31,17 @@ signin.post('/', function (req, res) {
         const results = await asynclib.queryDB({ username: req.body.username }, url, "userdb", "users")
 
         if (results.length == 1) {
-            const sentPassword = crypto.pbkdf2Sync(req.body.password, results[0].salt, 100000, 64, 'sha512').toString('hex')
-            if (sentPassword == results[0].password) {
-                req.session.user = results[0]
-                res.redirect('/profile')
-            } else {
-                res.render('signin', {
-                    userbad: false,
-                    passbad: true
-                })
-            }
+            crypto.pbkdf2(req.body.password, results[0].salt, 100000, 64, 'sha512', function (err, result) {
+                if (result.toString('hex') == results[0].password) {
+                    req.session.user = results[0]
+                    res.redirect('/profile')
+                } else {
+                    res.render('signin', {
+                        userbad: false,
+                        passbad: true
+                    })
+                }
+            })
         } else if (results.length == 0) {
             res.render('signin', {
                 userbad: true,
