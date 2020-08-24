@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('components/head.html'); -%>
+    </head>
+
+    <body>
+        <%- include('components/nav.html'); -%>
+        <div class="row h-100">
+            <div class="col my-auto">
+                <div class="container" style="padding-top: 5em;">
+                    <h1 class="text-success">Success!</h1>
+                    <p>You may return to the previous page.</p>
+                    <div class="pb-3">
+                        <% if (user.isBoard || user.isMentor) { %>
+                        <a class="btn btn-outline-primary mr-3" href="/dashboard">Dashboard</a>
+                        <% } %>
+                        <a class="btn btn-outline-primary" href="/profile">Profile Page <i data-feather="user" class="ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('components/footer.html'); -%>
+        <%- include('components/scripts.html'); -%>
+    </body>
+
+</html>
