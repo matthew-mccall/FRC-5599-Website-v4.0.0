@@ -19,9 +19,6 @@ exports.queryDB = function (query, url, db, collection) {
                     reject(err)
                     return
                 }
-
-                console.log(result)
-
                 resolve(result)
                 connectedDB.close()
             })
