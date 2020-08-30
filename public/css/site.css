@@ -15,9 +15,6 @@ body, html {
 
 .parallax { 
     background-color: rgb(30,108,147);
-
-    height: 100%; 
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
