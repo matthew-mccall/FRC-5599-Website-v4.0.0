@@ -5,7 +5,7 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body>
+    <body class="dark">
         <%- include('components/nav.html'); -%>
         <div class="d-flex flex-column min-vh-100">
             <div class="container py-5 mt-5">
@@ -16,18 +16,18 @@
                 </div>
                 <div class="pb-3">
                     <% if (user.isBoard || user.isMentor) { %>
-                    <a class="btn btn-outline-primary mr-3" href="/dashboard">Dashboard</a>
+                    <a class="btn btn-outline-secondary mr-3" href="/dashboard">Dashboard</a>
                     <% } %>
-                    <a class="btn btn-outline-primary" href="/signout">Sign Out <i data-feather="log-out" class="ml-2"></i></a>
+                    <a class="btn btn-outline-secondary" href="/signout">Sign Out <i data-feather="log-out" class="ml-2"></i></a>
                 </div>
                 <form action="/profile" method="POST">
                     <div class="form-group">
                         <label>Email address</label>
-                        <input type="email" class="form-control" placeholder="name@example.com" value="<%= user.email %>">
+                        <input type="email" class="form-control bg-dark border-0 text-light" placeholder="name@example.com" value="<%= user.email %>">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Describe yourself."><%= user.desc %></textarea>
+                        <textarea class="form-control bg-dark border-0 text-light" id="exampleFormControlTextarea1" rows="3" placeholder="Describe yourself."><%= user.desc %></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>

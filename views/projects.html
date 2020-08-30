@@ -5,7 +5,7 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body>
+    <body class="dark">
         <%- include('components/nav.html'); -%>
         <div class="container" style="padding-top: 5em; padding-bottom: 5em;">
             <h1>Team Projects</h1>
@@ -14,7 +14,7 @@
             <div class="row">
                 <% team.forEach(function(project) { %>
                 <div class="col-12 col-sm-6 col-md-4 p-2">
-                    <div class="card">
+                    <div class="card text-light bg-dark">
                         <div class="card-body">
                             <h5><%= project.title %> </h5>
                             <p><%= project.desc %></p>

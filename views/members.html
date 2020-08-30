@@ -5,16 +5,18 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body>
+    <body class="dark">
         <%- include('components/nav.html'); -%>
-        <div class="container" style="padding-top: 5em; padding-bottom: 5em;">
-            <h1>Leadership</h1>
-            <div class="row">
+
+        <div class="container" style="padding-top: 10em; padding-bottom: 5em;">
+
+            <h1 class="text-center display-4 p-3">Leadership</h1>
+            <div class="d-flex flex-row justify-content-center row-cols-2 row-cols-md-3 row-cols-lg-5">
                 <% members.forEach(function(member) { %>
                 <% if (member.isBoard) { %>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
-                    <img src="img/placeholders/person.jpeg" class="card-img-top">
-                    <div class="card">
+                <div class="col">
+                    <div class="card bg-dark text-light h-100">
+                        <img src="img/placeholders/person.jpeg" class="card-img-top">
                         <div class="card-body">
                             <h4><%= member.name %> </h4>
                             <p class="text-secondary"><%= member.division[0].toUpperCase() + member.division.substr(1) %> Division</p>
@@ -33,12 +35,12 @@
 
             <br>
 
-            <h1>Current Team</h1>
+            <h1 class="text-center display-4 p-3">Current Team</h1>
 
             <div class="row">
                 <% members.forEach(function(member) { %>
                 <% if (!member.isMentor && !member.isBoard && !member.isAlumni) { %>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
+                <div class="col-6 col-sm-3 col-md-2 p-2">
                     <div class="card">
                         <div class="card-body">
                             <h4><%= member.name %> </h4>
@@ -50,12 +52,12 @@
                 <% }); %>
             </div>
 
-            <h1>Mentors</h1>
+            <h1 class="text-center display-4 p-3">Mentors</h1>
 
             <div class="row">
                 <% members.forEach(function(member) { %>
                 <% if (member.isMentor) { %>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
+                <div class="col-6 col-sm-3 col-md-2 p-2">
                     <img src="img/placeholders/person.jpeg" class="card-img-top">
                     <div class="card">
                         <div class="card-body">
@@ -74,7 +76,7 @@
                 <% }); %>
             </div>
 
-            <h1>Alumni</h1>
+            <h1 class="text-center display-4 p-3">Alumni</h1>
 
             <div class="row">
                 <% members.forEach(function(member) { %>
@@ -89,8 +91,6 @@
                 <% } %>
                 <% }); %>
             </div>
-
-
         </div>
         <%- include('components/footer.html'); -%>
         <%- include('components/scripts.html'); -%>

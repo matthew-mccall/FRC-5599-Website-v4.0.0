@@ -5,7 +5,7 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body>
+    <body class="dark">
 
         <%- include('components/nav.html'); -%>
 
@@ -13,7 +13,7 @@
 
         <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <div class="text-dark modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="ModalLongTitle">Announcement!</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -37,7 +37,7 @@
             <div class="row h-100">
                 <div class="col my-auto">
                     <div class="container">
-                        <div class="bg-dark acryllic-dark text-light p-5 rounded-lg text-center">
+                        <div class="acryllic p-5 rounded-lg text-center">
 
                             <div class="d-none d-sm-none d-md-block">
                                 <h1 class="sentinels-font display-1">The Sentinels</h1>
@@ -58,15 +58,17 @@
             </div>
         </div>
 
-        <div class="container py-5">
-            <p> <%= team.desc %> </p>
+        <div class="light">
+            <div class="container py-5">
+                <p> <%= team.desc %> </p>
+            </div>
         </div>
 
         <div class="parallax" style="background-image: url('img/45831474165_fe5980aa1f_k.jpg');">
             <div class="row h-100">
                 <div class="col my-auto mh-25">
                     <div class="container">
-                        <div class="bg-dark acryllic-dark text-light p-4 rounded-lg text-center">
+                        <div class=" acryllic p-4 rounded-lg text-center">
                             <div class="d-none d-sm-none d-md-block">
                                 <h1 class="sentinels-font display-1">Our History</h1>
                             </div>
@@ -80,15 +82,17 @@
                 </div>
             </div>
 
-            <div class="container py-5">
-                <p> <%= team.history %> </p>
+            <div class="light">
+                <div class="container py-5">
+                    <p> <%= team.history %> </p>
+                </div>
             </div>
 
             <div class="parallax" style="background-image: url('img/46632722835_14ca5fa131_k.jpg');">
                 <div class="row h-100">
                     <div class="col my-auto">
                         <div class="container">
-                            <div class="bg-dark acryllic-dark text-light p-5 rounded-lg">
+                            <div class="acryllic p-5 rounded-lg">
                                 <h1>Subscribe to our newsletter</h1>
                                 <form action="/newsletter" method="POST" class="pt-3">
                                     <div class="form-group">
@@ -107,17 +111,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <%- include('components/footer.html'); -%>
-                <%- include('components/scripts.html'); -%>
+            <%- include('components/footer.html'); -%>
+            <%- include('components/scripts.html'); -%>
 
-                <% if (announcement.display) { %>
+            <% if (announcement.display) { %>
 
-                <script type="text/javascript">
-                    $('#ModalCenter').modal('show');
-                </script>
+            <script type="text/javascript">
+                $('#ModalCenter').modal('show');
+            </script>
 
-                <% } %>
+            <% } %>
 
     </body>
 

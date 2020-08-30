@@ -5,7 +5,7 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body>
+    <body class="dark">
 
         <%- include('components/nav.html'); -%>
 
@@ -13,9 +13,9 @@
 
         <div class="parallax" style="background-image: url('img/robots/<%= robot.name %>.jpg');">
             <div class="row h-100">
-                <div class="col my-auto">>
+                <div class="col my-auto">
                     <div class="container">
-                        <div class="bg-dark acryllic-dark text-light p-5 rounded-lg text-center">
+                        <div class="acryllic text-light p-5 rounded-lg text-center">
                             <div class="d-none d-sm-none d-md-block">
                                 <h1 class="sentinels-font display-1"><%= robot.name.toLowerCase() %></h1>
                             </div>
@@ -32,9 +32,12 @@
             </div>
         </div>
 
-        <div class="container py-5">
-            <p> <%= robot.desc %> </p>
+        <div class="light">
+            <div class="container py-5">
+                <p> <%= robot.desc %> </p>
+            </div>
         </div>
+
 
         <% }) %>
 
