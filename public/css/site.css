@@ -14,7 +14,7 @@ body, html {
 }
 
 .parallax { 
-    background-image: url("../img/logo/bulldog.png");
+    background-color: rgb(30,108,147);
 
     height: 100%; 
 
@@ -40,27 +40,41 @@ body, html {
     transition: 0.4s;
 }
 
-.translucent-btn:hover {
+.light .translucent-btn:hover {
     background-color: rgb(255, 255, 255) !important;
+    color: black;
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: rgb(20, 20, 20);
+    color: white;
+    border-color: gray;
 }
 
 @supports ((backdrop-filter: saturate(180%) blur(10px)) or (-webkit-backdrop-filter: saturate(180%) blur(10px))) {
-    .acryllic-light {
-        background-color: rgba(255, 255, 255, 0.8) !important;     
-        backdrop-filter: saturate(180%) blur(10px); 
-        -webkit-backdrop-filter: saturate(180%) blur(10px); 
+    .light .acryllic {
+        background-color: rgba(255, 255, 255, 0.8);     
+        backdrop-filter: saturate(180%) blur(20px); 
+        -webkit-backdrop-filter: saturate(180%) blur(20px); 
+        color: black;
     }
     
-    .acryllic-dark {
-        background-color: rgba(20, 20, 20, 0.8) !important;    
+    .dark .acryllic {
+        background-color: rgba(0, 0, 0, 0.8) !important;    
         backdrop-filter: saturate(180%) blur(20px); 
         -webkit-backdrop-filter: saturate(180%) blur(20px);
+        color: white;
     }
 }
 
 /* Disable parallax for mobile browsers*/
 @media only screen and (max-device-width: 1366px) {
     .parallax {
-    background-attachment: scroll;
+        background-attachment: scroll;
     }
 }
