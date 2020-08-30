@@ -8,6 +8,11 @@ var RedisStore = require('connect-redis')(session);
 var app = module.exports = express()
 const port = process.env.PORT | 3000
 
+var cacheStatic = function (req, res, next) {
+    res.set('Cache-Control', 'max-age=3600000')
+    next()
+}
+
 app.engine('.html', require('ejs').__express)
 app.set('view engine', 'html')
 
@@ -28,6 +33,8 @@ app.use(session({
 
     store: new RedisStore({ client: redis })
 }));
+
+app.use(cacheStatic)
 
 app.use('/', require('./site'))
 app.use('/members', require('./members'))
