@@ -56,25 +56,33 @@ dashboard.post('/', function (req, res) {
 
             announcementData.message = req.body.announcementMessage
             fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
-                res.redirect('/500')
+                if (err) {
+                    res.redirect('/500')
+                }
             })
 
             if (req.body.announcementDisplay) {
                 announcementData.display = true
                 fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
-                    res.redirect('/500')
+                    if (err) {
+                        res.redirect('/500')
+                    }
                 })
             } else {
                 announcementData.display = false;
                 fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
-                    res.redirect('/500')
+                    if (err) {
+                        res.redirect('/500')
+                    }
                 })
             }
         }
-
         updateAnnouncements()
     }
 
+    if (req.body.currentMemberName) {
+
+    }
 
     if (req.body.newMemberName) {
 
@@ -104,7 +112,7 @@ dashboard.post('/', function (req, res) {
                 newMember.isAlumni = true
             }
 
-            newMember.year = req.body.newMemberYear
+            newMember.joined = req.body.newMemberYear
 
             asynclib.insertDB(newMember, url, "userdb", "users")
         }
@@ -112,7 +120,6 @@ dashboard.post('/', function (req, res) {
         addUser()
 
     }
-
     res.redirect('/success')
 })
 
