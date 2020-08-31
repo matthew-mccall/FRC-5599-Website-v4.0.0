@@ -37,7 +37,7 @@ body, html {
     transition: 0.4s;
 }
 
-.light .translucent-btn:hover {
+.translucent-btn:hover {
     background-color: rgb(255, 255, 255) !important;
     color: black;
 }
@@ -53,19 +53,27 @@ body, html {
     border-color: gray;
 }
 
+.light .acryllic {
+    background-color: rgb(255, 255, 255);     
+    color: black;
+}
+    
+.dark .acryllic {
+    background-color: rgb(20, 20, 20) !important;    
+    color: white;
+}
+
 @supports ((backdrop-filter: saturate(180%) blur(10px)) or (-webkit-backdrop-filter: saturate(180%) blur(10px))) {
     .light .acryllic {
         background-color: rgba(255, 255, 255, 0.8);     
         backdrop-filter: saturate(180%) blur(20px); 
         -webkit-backdrop-filter: saturate(180%) blur(20px); 
-        color: black;
     }
     
     .dark .acryllic {
         background-color: rgba(0, 0, 0, 0.8) !important;    
         backdrop-filter: saturate(180%) blur(20px); 
         -webkit-backdrop-filter: saturate(180%) blur(20px);
-        color: white;
     }
 }
 
