@@ -29,7 +29,6 @@ dashboard.use(bodyParser.json())
 dashboard.get('/', function (req, res) {
 
     if (req.session.user) {
-
         if (!req.session.user.isBoard && !req.session.user.isMentor) {
             res.redirect('/profile')
             return;
@@ -51,31 +50,19 @@ dashboard.post('/', function (req, res) {
     if (req.body.announcementMessage) {
 
         const updateAnnouncements = async function () {
-
-            var announcementData = JSON.parse(await asynclib.readFile('data/team.json'))
-
+            var announcementData = JSON.parse(await asynclib.readFile('data/announcement.json'))
             announcementData.message = req.body.announcementMessage
+            if (req.body.announcementDisplay) {
+                announcementData.display = true
+
+            } else {
+                announcementData.display = false;
+            }
             fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
                 if (err) {
                     res.redirect('/500')
                 }
             })
-
-            if (req.body.announcementDisplay) {
-                announcementData.display = true
-                fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
-                    if (err) {
-                        res.redirect('/500')
-                    }
-                })
-            } else {
-                announcementData.display = false;
-                fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
-                    if (err) {
-                        res.redirect('/500')
-                    }
-                })
-            }
         }
         updateAnnouncements()
     }
