@@ -34,7 +34,7 @@ app.use(session({
     store: new RedisStore({ client: redis })
 }));
 
-app.use(cacheStatic)
+// app.use(cacheStatic)
 
 app.use('/', require('./site'))
 app.use('/members', require('./members'))
