@@ -5,22 +5,11 @@
 
 body, html {
     height: 100%;
-    overflow-x: hidden;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif !important;
 }
 
 .sentinels-font {
     font-family: bladerunner;
-}
-
-.parallax { 
-    background-color: rgb(30,108,147);
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
 }
 
 .translucent-field {
@@ -74,12 +63,5 @@ body, html {
         background-color: rgba(0, 0, 0, 0.8) !important;    
         backdrop-filter: saturate(180%) blur(20px); 
         -webkit-backdrop-filter: saturate(180%) blur(20px);
-    }
-}
-
-/* Disable parallax for mobile browsers*/
-@media only screen and (max-device-width: 1366px) {
-    .parallax {
-        background-attachment: scroll;
     }
 }
