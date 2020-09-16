@@ -5,8 +5,22 @@
 <script>
     window.onload = function () {
         $(".defer-bg").each(function () {
-            $(this).css("background-image", "url('" + $(this).attr("data-bg") + "')")
+            $(this).css("background", $(this).attr("data-bg"))
+            $(this).css("background-size", "cover")
+            if ($("window").width >= 1366) {
+                $(this).css("background-attachment", "fixed")
+            } else {
+                $(this).css("background-attachment", "scroll")
+            }
         })
         feather.replace({ 'stroke-width': 1.5, 'width': 20, 'height': 20 })
     }
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({ boundary: 'window' })
+    })
+
+    $("#bottomNav div.col a, #sideNav a").click(function () {
+        $(this).html('<div class="spinner-border d-block" role="status"><span class= "sr-only"> Loading...</span></div>')
+    });
 </script>
