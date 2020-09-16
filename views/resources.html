@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('components/head.html'); -%>
+    </head>
+
+    <body class="ms-Fabric ms-bgColor-gray200" dir="ltr">
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <div class="col-auto h-100 d-none d-md-block ms-bgColor-gray200 text-light">
+                    <div class="row h-100">
+                        <div class="col my-auto px-3 mh-100" style="overflow-y: scroll;">
+                            <nav class="nav flex-column  ms-fontSize-32">
+                                <%- include('components/nav/side.html'); -%>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100 p-0" style="overflow-y: scroll;">
+                    <div class="min-vh-100 d-flex flex-column container">
+                        <div class="flex-grow-1">
+                            <div class="container text-light pt-5">
+                                <h1>Resources</h1>
+                                <a href="/signin" class="btn btn-primary my-3">Sign In <i data-feather="log-in" class="ml-2"></i></a>
+                                <p>The Resources Page will be coming soon.</p>
+                            </div>
+                        </div>
+                        <%- include('components/footer.html'); -%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fixed-bottom d-md-none">
+            <div class="ms-bgColor-gray200 container-fluid">
+                <%- include('components/nav/bottom.html'); -%>
+            </div>
+        </div>
+        <%- include('components/scripts.html'); -%>
+    </body>
+
+</html>
