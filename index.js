@@ -36,6 +36,7 @@ app.use(session({
 
 // app.use(cacheStatic)
 
+app.use('/nav', require('./nav'))
 app.use('/', require('./site'))
 app.use('/members', require('./members'))
 app.use('/robots', require('./robots'))
@@ -46,6 +47,7 @@ app.use('/signin', require('./signin'))
 app.use('/forgot', require('./forgot'))
 app.use('/dashboard', require('./dashboard'))
 app.use('/success', require('./success'))
+app.use('/resources', require('./resources'))
 app.use('/profile', require('./profile'))
 app.use('/signout', require('./signout'))
 app.use('/404', require('./404'))
