@@ -5,25 +5,44 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body class="dark">
-        <%- include('components/nav.html'); -%>
-        <div class="theme d-flex flex-column min-vh-100">
-            <div class="row flex-grow-1">
-                <div class="col my-auto">
-                    <div class="container" style="padding-top: 5em;">
-                        <h1 class="pb-4">Forgot your password?</h1>
-                        <form>
-                            <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" aria-describedby="button-addon2" required>
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit" id="button-addon2">Submit</button>
+    <body class="ms-Fabric ms-bgColor-gray200" dir="ltr">
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <div class="col-auto h-100 d-none d-md-block ms-bgColor-gray200 text-light">
+                    <div class="row h-100">
+                        <div class="col my-auto px-3 mh-100" style="overflow-y: scroll;">
+                            <nav class="nav flex-column  ms-fontSize-32">
+                                <%- include('components/nav/side.html'); -%>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100 p-0" style="overflow-y: scroll;">
+                    <div class="min-vh-100 d-flex flex-column container-fluid">
+                        <div class="row flex-grow-1">
+                            <div class="col my-auto text-light">
+                                <div class="container">
+                                    <h1 class="pb-4">Forgot your password?</h1>
+                                    <form>
+                                        <div class="input-group mb-3">
+                                            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" aria-describedby="button-addon2" required>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit" id="button-addon2">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                        <%- include('components/footer.html'); -%>
                     </div>
                 </div>
             </div>
-            <%- include('components/footer.html'); -%>
+        </div>
+        <div class="fixed-bottom d-md-none">
+            <div class="ms-bgColor-gray200 container-fluid">
+                <%- include('components/nav/bottom.html'); -%>
+            </div>
         </div>
         <%- include('components/scripts.html'); -%>
     </body>

@@ -5,35 +5,62 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body class="dark">
-        <%- include('components/nav.html'); -%>
-        <div class="container" style="padding-top: 5em; padding-bottom: 5em;">
-            <main>
-                <section>
-                    <h1>Team Projects</h1>
-                    <p>These are projects created and maintained by us, FRC 5599 BNCHS Sentinels. you can view most of this projects on our <a href="https://github.com/Team5599">GitHub</a>.</p>
-                    <div class="row pb-5">
-                        <% team.forEach(function(project) { %>
-                        <div class="col-12 col-sm-6 col-md-4 p-2">
-                            <div class="card text-light bg-dark">
-                                <div class="card-body">
-                                    <h5><%= project.title %> </h5>
-                                    <p><%= project.desc %></p>
-                                    <a href="https://github.com/Team5599/<%= project.title %>" class="btn btn-primary">View on GitHub</a>
-                                </div>
+    <body class="ms-Fabric ms-bgColor-gray200" dir="ltr">
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <div class="col-auto h-100 d-none d-md-block ms-bgColor-gray200 text-light">
+                    <div class="row h-100">
+                        <div class="col my-auto px-3 mh-100" style="overflow-y: scroll;">
+                            <nav class="nav flex-column  ms-fontSize-32">
+                                <%- include('components/nav/side.html'); -%>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100 p-0" style="overflow-y: scroll;">
+                    <div class="min-vh-100 d-flex flex-column">
+                        <div class="flex-grow-1">
+                            <div class="container text-light">
+                                <main>
+                                    <section>
+                                        <div class="py-5">
+                                            <h1>Team Projects</h1>
+                                            <p>These are projects created and maintained by us, FRC 5599 BNCHS Sentinels. you can view most of this projects on our <a href="https://github.com/Team5599">GitHub</a>.</p>
+                                            <div class="card-columns">
+                                                <% team.forEach(function(project) { %>
+                                                <div class="card text-light bg-dark">
+                                                    <div class="card-header">
+                                                        <h5><%= project.title %> </h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p><%= project.desc %></p>
+                                                        <a href="https://github.com/Team5599/<%= project.title %>" class="btn btn-primary">View on GitHub</a>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="py-5">
+                                            <h1>Member Projects</h1>
+                                            <p>These are independent projects created and maintained individual members of our team. Be sure to check them out.</p>
+                                            <p class="text-muted">Member projects functionality is still being worked on.</p>
+                                        </div>
+                                    </section>
+                                </main>
                             </div>
                         </div>
-                        <% }); %>
+                        <%- include('components/footer.html'); -%>
                     </div>
-                </section>
-                <section>
-                    <h1>Member Projects</h1>
-                    <p>These are separate projects created and maintained individual members of our team. Be sure to check them out.</p>
-                    <p class="text-muted">Member projects functionality is still being worked on.</p>
-                </section>
-            </main>
+                </div>
+            </div>
         </div>
-        <%- include('components/footer.html'); -%>
+        <div class="fixed-bottom d-md-none">
+            <div class="ms-bgColor-gray200 container-fluid">
+                <%- include('components/nav/bottom.html'); -%>
+            </div>
+        </div>
         <%- include('components/scripts.html'); -%>
     </body>
 

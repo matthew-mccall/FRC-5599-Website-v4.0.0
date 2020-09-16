@@ -5,35 +5,58 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body class="dark">
-        <%- include('components/nav.html'); -%>
-        <div class="d-flex flex-column min-vh-100">
-            <div class="container py-5 mt-5">
-                <h1>Hello, <%= user.name %>!</h1>
-                <div class="text-muted pb-3">
-                    <div>@<%= user.username %></div>
-                    <div><%= user.division[0].toUpperCase() + user.division.substr(1) %> Division</div>
-                </div>
-                <div class="pb-3">
-                    <% if (user.isBoard || user.isMentor) { %>
-                    <a class="btn btn-outline-secondary mr-3" href="/dashboard">Dashboard</a>
-                    <% } %>
-                    <a class="btn btn-outline-secondary" href="/signout">Sign Out <i data-feather="log-out" class="ml-2"></i></a>
-                </div>
-                <form action="/profile" method="POST">
-                    <div class="form-group">
-                        <label>Email address</label>
-                        <input type="email" class="form-control bg-dark border-0 text-light" placeholder="name@example.com" value="<%= user.email %>">
+    <body class="ms-Fabric ms-bgColor-gray200" dir="ltr">
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <div class="col-auto h-100 d-none d-md-block ms-bgColor-gray200 text-light">
+                    <div class="row h-100">
+                        <div class="col my-auto px-3 mh-100" style="overflow-y: scroll;">
+                            <nav class="nav flex-column  ms-fontSize-32">
+                                <%- include('components/nav/side.html'); -%>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control bg-dark border-0 text-light" id="exampleFormControlTextarea1" rows="3" placeholder="Describe yourself."><%= user.desc %></textarea>
-                        <small class="text-muted">You are expected to follow the guidelines of <i>Gracious Professionalism</i> when describing yourself.</small>
+                </div>
+                <div class="col h-100 p-0" style="overflow-y: scroll;">
+                    <div class="min-vh-100 d-flex flex-column container-fluid">
+                        <div class="row flex-grow-1">
+                            <div class="col my-auto text-light">
+                                <div class="container">
+                                    <h1>Hello, <%= user.name %>!</h1>
+                                    <div class="text-muted pb-3">
+                                        <div>@<%= user.username %></div>
+                                        <div><%= user.division[0].toUpperCase() + user.division.substr(1) %> Division</div>
+                                    </div>
+                                    <div class="pb-3">
+                                        <% if (user.isBoard || user.isMentor) { %>
+                                        <a class="btn btn-outline-secondary mr-3" href="/dashboard">Dashboard</a>
+                                        <% } %>
+                                        <a class="btn btn-outline-secondary" href="/signout">Sign Out <i data-feather="log-out" class="ml-2"></i></a>
+                                    </div>
+                                    <form action="/profile" method="POST">
+                                        <div class="form-group">
+                                            <label>Email address</label>
+                                            <input type="email" class="form-control bg-dark border-0 text-light" placeholder="name@example.com" value="<%= user.email %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Description</label>
+                                            <textarea class="form-control bg-dark border-0 text-light" id="exampleFormControlTextarea1" rows="3" placeholder="Describe yourself."><%= user.desc %></textarea>
+                                            <small class="text-muted">You are expected to follow the guidelines of <i>Gracious Professionalism</i> when describing yourself.</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <%- include('components/footer.html'); -%>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
+                </div>
             </div>
-            <%- include('components/footer.html'); -%>
+        </div>
+        <div class="fixed-bottom d-md-none">
+            <div class="ms-bgColor-gray200 container-fluid">
+                <%- include('components/nav/bottom.html'); -%>
+            </div>
         </div>
         <%- include('components/scripts.html'); -%>
     </body>

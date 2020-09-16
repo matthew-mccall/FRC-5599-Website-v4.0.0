@@ -5,41 +5,55 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body class="dark">
-        <%- include('components/nav.html'); -%>
-
-        <div class="d-flex flex-column min-vh-100">
-            <div class="row flex-grow-1 defer-bg" data-bg="img/45831474165_fe5980aa1f_k.jpg">
-                <div class="col my-auto">
-                    <div class="acryllic rounded-lg p-5 container">
-                        <div class="text-light rounded-lg text-center">
-                            <div class="px-5 pt-5">
-                                <main>
-                                    <div class="d-none d-sm-none d-md-block">
-                                        <h1 class="display-1">Social Media</h1>
-                                    </div>
-
-                                    <!--Smaller title for mobile-->
-                                    <div class="d-md-none d-lg-none d-xl-none">
-                                        <h1>Social Media</h1>
-                                    </div>
-
-                                    <div class="d-flex flex-wrap justify-content-center pb-5">
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://github.com/team5599"><i data-feather="github"></i></a>
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.instagram.com/sentinels_5599/"><i data-feather="instagram"></i></a>
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.facebook.com/team5599sentinels"><i data-feather="facebook"></i></a>
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://twitter.com/Sentinels5599"><i data-feather="twitter"></i></a>
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.youtube.com/channel/UCALF3caI0F4WJfJisLFSBWQ"><i data-feather="youtube"></i></a>
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.twitch.tv/team5599_thesentinels"><i data-feather="twitch"></i></a>
-                                        <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="mailto:marketing.sentinels@gmail.com"><i data-feather="mail"></i></a>
-                                    </div>
-                                </main>
-                            </div>
+    <body class="ms-Fabric ms-bgColor-gray200" dir="ltr">
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <div class="col-auto h-100 d-none d-md-block ms-bgColor-gray200 text-light">
+                    <div class="row h-100">
+                        <div class="col my-auto px-3 mh-100" style="overflow-y: scroll;">
+                            <nav class="nav flex-column  ms-fontSize-32">
+                                <%- include('components/nav/side.html'); -%>
+                            </nav>
                         </div>
                     </div>
                 </div>
+                <div class="col h-100 p-0" style="overflow-y: scroll;">
+                    <div class="min-vh-100 d-flex flex-column container-fluid">
+                        <div class="row flex-grow-1 defer-bg" data-bg="linear-gradient(0deg, rgba(30, 108, 147, 0.8), rgba(30, 108, 147, 0.8)), url('img/robot_1.jpg')">
+                            <div class="col my-auto text-light">
+                                <div class="container">
+                                    <main>
+                                        <div class="d-none d-sm-none d-md-block text-center">
+                                            <h1 class="display-1">Social Media</h1>
+                                        </div>
+
+                                        <!--Smaller title for mobile-->
+                                        <div class="d-md-none d-lg-none d-xl-none text-center">
+                                            <h1>Social Media</h1>
+                                        </div>
+
+                                        <div class="d-flex flex-wrap justify-content-center">
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://github.com/team5599"><i data-feather="github"></i></a>
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.instagram.com/sentinels_5599/"><i data-feather="instagram"></i></a>
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.facebook.com/team5599sentinels"><i data-feather="facebook"></i></a>
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://twitter.com/Sentinels5599"><i data-feather="twitter"></i></a>
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.youtube.com/channel/UCALF3caI0F4WJfJisLFSBWQ"><i data-feather="youtube"></i></a>
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="https://www.twitch.tv/team5599_thesentinels"><i data-feather="twitch"></i></a>
+                                            <a class="p-3 m-2 rounded-circle btn btn-outline-light" href="mailto:marketing.sentinels@gmail.com"><i data-feather="mail"></i></a>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
+                        <%- include('components/footer.html'); -%>
+                    </div>
+                </div>
             </div>
-            <%- include('components/footer.html'); -%>
+        </div>
+        <div class="fixed-bottom d-md-none">
+            <div class="ms-bgColor-gray200 container-fluid">
+                <%- include('components/nav/bottom.html'); -%>
+            </div>
         </div>
         <%- include('components/scripts.html'); -%>
     </body>

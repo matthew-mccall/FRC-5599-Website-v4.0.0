@@ -5,94 +5,172 @@
         <%- include('components/head.html'); -%>
     </head>
 
-    <body class="dark">
-        <%- include('components/nav.html'); -%>
-        <div class="container" style="padding-top: 10em; padding-bottom: 5em;">
-            <main>
-                <section>
-                    <h1 class="text-center display-4 p-3">Leadership</h1>
-                    <div class="d-flex flex-row justify-content-center row-cols-2 row-cols-md-3 row-cols-lg-5">
-                        <% members.forEach(function(member) { %>
-                        <% if (member.isBoard) { %>
-                        <div class="col">
-                            <div class="card bg-dark text-light h-100">
-                                <img src="img/placeholders/person.jpeg" class="card-img-top">
-                                <div class="card-body">
-                                    <h4><%= member.name %> </h4>
-                                    <p class="text-secondary"><%= member.division[0].toUpperCase() + member.division.substr(1) %> Division</p>
-                                    <% if (member.desc != null) { %>
-                                    <p><%= member.desc %></p>
-                                    <% } %>
-                                </div>
-                                <div class="card-footer">
-                                    Joined: <%= member.joined %>
+    <body class="ms-Fabric ms-bgColor-gray200" dir="ltr">
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <div class="col-auto h-100 d-none d-md-block ms-bgColor-gray200 text-light">
+                    <div class="row h-100">
+                        <div class="col my-auto px-3 mh-100" style="overflow-y: scroll;">
+                            <nav id="sideNav" class="nav flex-column  ms-fontSize-32">
+                                <%- include('components/nav/side.html'); -%>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100 p-0" style="overflow-y: scroll;">
+                    <main>
+                        <section>
+                            <div class="defer-bg" data-bg="linear-gradient(0deg, rgba(30, 108, 147, 0.8), rgba(30, 108, 147, 0.8)), url('img/robot_1.jpg')">
+                                <div class="container-fluid">
+                                    <div class="row min-vh-100 text-light">
+                                        <div class="col my-auto">
+                                            <div class="container">
+                                                <div class="d-none d-lg-block">
+                                                    <h1 class="display-1">Members and Divisions</h1>
+                                                </div>
+                                                <div class="d-lg-none">
+                                                    <h1 class="display-4">Members and Divisions</h1>
+                                                    <hr class="border-light" />
+                                                </div>
+                                                <p class="lead">Our team is divided into separate divisons that specialize in a specific field and work together as a team to produce a fully functional robot.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
-                        <% }); %>
-                    </div>
-                </section>
-                <section>
-                    <h1 class="text-center display-4 p-3">Current Team</h1>
-                    <div class="row">
-                        <% members.forEach(function(member) { %>
-                        <% if (!member.isMentor && !member.isBoard && !member.isAlumni) { %>
-                        <div class="col-6 col-sm-3 col-md-2 p-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4><%= member.name %> </h4>
-                                    <p class="text-secondary"><%= member.division[0].toUpperCase() + member.division.substr(1) %> Division</p>
+                        </section>
+                        <section>
+                            <div class="defer-bg" data-bg="linear-gradient(0deg, rgba(243, 134, 36, 0.8), rgba(243, 134, 36, 0.8)), url('img/mechanics.jpg')">
+                                <div class="container-fluid">
+                                    <div class="row min-vh-100 text-light">
+                                        <div class="col my-auto">
+                                            <div class="container py-5">
+                                                <div class="d-none d-lg-block">
+                                                    <h1 class="display-1">Mechanics</h1>
+                                                </div>
+                                                <div class="d-lg-none">
+                                                    <h1 class="display-4">Mechanics</h1>
+                                                </div>
+                                                <p>Mechanics is essentially the building of the robot and the chassis (base of our robot). We do both online and offline work:</p>
+                                                <ol>
+                                                    <li>Research on new possible drive trains, motors, and etc.</li>
+                                                    <li>Learning the name of the tools and how to use them.</li>
+                                                    <li>Working with our mentors to learn how to apply our knowledge and know how to take apart/put our robots together.</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
-                        <% }); %>
-                    </div>
-                </section>
-                <section>
-                    <h1 class="text-center display-4 p-3">Mentors</h1>
-                    <div class="row">
-                        <% members.forEach(function(member) { %>
-                        <% if (member.isMentor) { %>
-                        <div class="col-6 col-sm-3 col-md-2 p-2">
-                            <img src="img/placeholders/person.jpeg" class="card-img-top">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4><%= member.name %> </h4>
-                                    <p class="text-secondary"><%= member.division[0].toUpperCase() + member.division.substr(1) %> Division</p>
-                                    <% if (member.desc != null) { %>
-                                    <p><%= member.desc %></p>
-                                    <% } %>
-                                </div>
-                                <div class="card-footer">
-                                    Joined: <%= member.joined %>
+                        </section>
+                        <section>
+                            <div class="defer-bg" data-bg="linear-gradient(0deg, rgba(234, 30, 100, 0.8), rgba(234, 30, 100, 0.8)), url('img/electronics.jpg')">
+                                <div class="container-fluid">
+                                    <div class="row min-vh-100 text-light">
+                                        <div class="col my-auto">
+                                            <div class="container py-5">
+                                                <div class="d-none d-lg-block">
+                                                    <h1 class="display-1">Electronics</h1>
+                                                </div>
+                                                <div class="d-lg-none">
+                                                    <h1 class="display-4">Electronics</h1>
+                                                </div>
+                                                <p>Electronics deals with the power and control system of the robot. This includes working with batteries, circuit breakers, motor controllers, various sensors and wires. In the electronics division, one learns how to wire all these different components to make our robot/s function.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
-                        <% }); %>
-                    </div>
-                </section>
-                <section>
-                    <h1 class="text-center display-4 p-3">Alumni</h1>
-                    <div class="row">
-                        <% members.forEach(function(member) { %>
-                        <% if (member.isAlumni) { %>
-                        <div class="col-6 col-sm-4 col-md-3 p-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4><%= member.name %> </h4>
+                        </section>
+                        <section>
+                            <div class="defer-bg" data-bg="linear-gradient(0deg, rgba(241, 197, 14, 0.8), rgba(241, 197, 14, 0.8)), url('img/history.jpg')">
+                                <div class="container-fluid">
+                                    <div class="row min-vh-100 text-light">
+                                        <div class="col my-auto">
+                                            <div class="container py-5">
+                                                <div class="d-none d-lg-block">
+                                                    <h1 class="display-1">Programming</h1>
+                                                </div>
+                                                <div class="d-lg-none">
+                                                    <h1 class="display-4">Programming</h1>
+                                                </div>
+                                                <p>The Programming division is responsible for adding functionality to the robot through use of its motors, servos, sensors, etc. We deal with both human-controlled actions through gamepads and autonomous “sensor-based” actions to control most of the robot. All of this is handled over our laptop “Driver Station”, sending commands and reading data to and from the robot. After teaching you Java <em>(No prior experience required)</em> and how to use our various tools and software, come “Kick Off” when the competition is revealed, we will split into two groups.</p>
+                                                <ul>
+                                                    <li>The “Tele-Operated” group will focus on user-controlled actions for the robot and work with controllers. You will work with the driveteam to create the most comfortable and efficient control systems.</li>
+                                                    <li>The “Autonomous” group will focus on sensor and camera-based data to make the robot complete complex automated tasks without the aid of a person. This is more on the complex side and will require a lot of research.</li>
+                                                </ul>
+                                                <h3>Members</h3>
+                                                <div class="d-flex flex-wrap">
+                                                    <% members.forEach(function (member) { %>
+                                                    <% if (member.division == "programming") { %>
+                                                    <div class="badge badge-light mr-2 mb-2">
+                                                        <%= member.name %>
+                                                    </div>
+                                                    <% } %>
+                                                    <% }) %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
-                        <% }); %>
-                    </div>
-                </section>
-            </main>
+                        </section>
+                        <section>
+                            <div class="defer-bg" data-bg="linear-gradient(0deg, rgba(32, 140, 76, 0.8), rgba(32, 140, 76, 0.8)), url('img/history.jpg')">
+                                <div class="container-fluid">
+                                    <div class="row min-vh-100 text-light">
+                                        <div class="col my-auto">
+                                            <div class="container py-5">
+                                                <div class="d-none d-lg-block">
+                                                    <h1 class="display-1">Computer-Aided Design</h1>
+                                                </div>
+                                                <div class="d-lg-none">
+                                                    <h1 class="display-4">Computer-Aided Design</h1>
+                                                </div>
+                                                <p>In this division, we will be doing design practices and lectures on features and what is necessary to teach you guys to design a robot in the computer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="defer-bg" data-bg="linear-gradient(0deg, rgba(45, 243, 208, 0.8), rgba(45, 243, 208, 0.8)), url('img/history.jpg')">
+                                <div class="container-fluid">
+                                    <div class="row min-vh-100 text-light">
+                                        <div class="col my-auto">
+                                            <div class="container py-5">
+                                                <div class="d-none d-lg-block">
+                                                    <h1 class="display-1">Marketing</h1>
+                                                </div>
+                                                <div class="d-lg-none">
+                                                    <h1 class="display-4">Marketing</h1>
+                                                </div>
+                                                <p>Our marketing division is one cohesive group, responsible for sponsor outreach, public appearance, and most importantly internal budget and activity management. Some of the work from this division includes:</p>
+                                                <ul>
+                                                    <li>Outreach through phone calls, emails, and in person interactions.</li>
+                                                    <li>Managing the team’s overall financial activities and elements including divisional budgets, logs of income, profit of each respective fundraiser.</li>
+                                                    <li>Executing fundraising and community events such as bake sales, PTC events, and luncheons.</li>
+                                                    <li>Exposing students to development in skills pertaining organization, writing, presentation, communication, and leadership.</li>
+                                                    <li>Help organize events like competitions (gather necessary materials like competition rosters, robot transportation, etc)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                    <%- include('components/footer.html'); -%>
+                </div>
+            </div>
         </div>
-        <%- include('components/footer.html'); -%>
+        <div class="fixed-bottom d-md-none">
+            <div class="ms-bgColor-gray200 container-fluid">
+                <%- include('components/nav/bottom.html'); -%>
+            </div>
+        </div>
         <%- include('components/scripts.html'); -%>
     </body>
+
 </html>
