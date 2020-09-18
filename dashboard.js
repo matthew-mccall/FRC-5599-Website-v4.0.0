@@ -2,12 +2,19 @@ var express = require('express')
 const asynclib = require('./asynclib')
 const bodyParser = require('body-parser')
 const fs = require('fs')
-const crypto = require('crypto')
 var dashboard = express.Router();
 
 var url = "mongodb://localhost:27017/userdb"
 
-var announcementData;
+var verifyUser = function (req, res, next) {
+    if (req.session.user) {
+        if (req.session.user.isBoard || req.session.user.isMentor) {
+            next()
+            return
+        }
+    }
+    res.redirect('/signin')
+}
 
 const getData = async function (req, res) {
     res.render('dashboard', {
@@ -26,88 +33,45 @@ dashboard.use(
 
 dashboard.use(bodyParser.json())
 
+dashboard.use(verifyUser)
+
 dashboard.get('/', function (req, res) {
-
-    if (req.session.user) {
-        if (!req.session.user.isBoard && !req.session.user.isMentor) {
-            res.redirect('/profile')
-            return;
-        }
-        getData(req, res)
-    } else {
-        res.redirect('/signin')
-    }
-
+    getData(req, res);
 })
 
-dashboard.post('/', function (req, res) {
-
-    if (!req.session.user) {
-        res.redirect('/signin')
-        return;
-    }
-
-    if (req.body.announcementMessage) {
-
-        const updateAnnouncements = async function () {
-            var announcementData = JSON.parse(await asynclib.readFile('data/announcement.json'))
-            announcementData.message = req.body.announcementMessage
-            if (req.body.announcementDisplay) {
-                announcementData.display = true
-
-            } else {
-                announcementData.display = false;
-            }
-            fs.writeFile('data/announcement.json', JSON.stringify(announcementData), function (err) {
-                if (err) {
-                    res.redirect('/500')
-                }
+dashboard.post('/announcement', function (req, res) {
+    fs.writeFile('data/announcement.json', JSON.stringify({
+        title: req.body.title,
+        message: req.body.message,
+        display: req.body.display == "true",
+        postedOn: new Date().toDateString() //TODO: Account for localization? (Different timezones)
+    }), function (err) {
+        if (err) {
+            res.send({
+                success: false
+            })
+        } else {
+            res.send({
+                success: true
             })
         }
-        updateAnnouncements()
-    }
+    })
+})
 
-    if (req.body.currentMemberName) {
-
-    }
-
-    if (req.body.newMemberName) {
-
-        const addUser = async function () {
-            var newMember = new Object()
-            newMember.name = req.body.newMemberName
-            newMember.username = newMember.name.toLowerCase().replace(' ', '-')
-            newMember.salt = (await asynclib.randomBytes(32)).toString('hex')
-            newMember.password = (await asynclib.pbkdf2(req.body.newMemberPassword, newMember.salt, 100000, 64, 'sha512')).toString('hex')
-
-            newMember.email = req.body.newMemberEmail
-            newMember.division = req.body.newMemberDivision
-
-            if (req.body.newMemberDesc) {
-                newMember.desc = newMemberDesc
-            } else {
-                newMember.desc = ""
-            }
-
-            if (req.body.newMemberBoard) {
-                newMember.isBoard = true
-            }
-            if (req.body.newMemberMentor) {
-                newMember.isMentor = true
-            }
-            if (req.body.newMemberAlumni) {
-                newMember.isAlumni = true
-            }
-
-            newMember.joined = req.body.newMemberYear
-
-            asynclib.insertDB(newMember, url, "userdb", "users")
-        }
-
-        addUser()
-
-    }
-    res.redirect('/success')
+dashboard.post('/newMember', function (req, res) {
+    asynclib.insertDB({
+        name = req.body.name,
+        username = name.toLowerCase().replace(' ', '-'),
+        salt = (await asynclib.randomBytes(32)).toString('hex'),
+        password = (await asynclib.pbkdf2(req.body.newMemberPassword, salt, 100000, 64, 'sha512')).toString('hex'),
+        email = req.body.email,
+        division = req.body.division,
+        desc = req.body.desc,
+        isBoard = req.body.isBoard == "true",
+        isMentor = req.body.isMentor == "true",
+        isAlumni = req.body.isAlumni == "true",
+        joined = req.body.year
+    }, url, "userdb", "users")
 })
 
 module.exports = dashboard;
