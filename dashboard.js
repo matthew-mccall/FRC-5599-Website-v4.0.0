@@ -60,17 +60,17 @@ dashboard.post('/announcement', function (req, res) {
 
 dashboard.post('/newMember', function (req, res) {
     asynclib.insertDB({
-        name = req.body.name,
-        username = name.toLowerCase().replace(' ', '-'),
-        salt = (await asynclib.randomBytes(32)).toString('hex'),
-        password = (await asynclib.pbkdf2(req.body.newMemberPassword, salt, 100000, 64, 'sha512')).toString('hex'),
-        email = req.body.email,
-        division = req.body.division,
-        desc = req.body.desc,
-        isBoard = req.body.isBoard == "true",
-        isMentor = req.body.isMentor == "true",
-        isAlumni = req.body.isAlumni == "true",
-        joined = req.body.year
+        name: req.body.name,
+        username: name.toLowerCase().replace(' ', '-'),
+        salt: asynclib.randomBytes(32).toString('hex'),
+        password: asynclib.pbkdf2(req.body.newMemberPassword, salt, 100000, 64, 'sha512').toString('hex'),
+        email: req.body.email,
+        division: req.body.division,
+        desc: req.body.desc,
+        isBoard: req.body.isBoard == "true",
+        isMentor: req.body.isMentor == "true",
+        isAlumni: req.body.isAlumni == "true",
+        joined: req.body.year
     }, url, "userdb", "users")
 })
 
