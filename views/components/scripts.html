@@ -7,7 +7,7 @@
         $(".defer-bg").each(function () {
             $(this).css("background", $(this).attr("data-bg"))
             $(this).css("background-size", "cover")
-            if ($("window").width >= 1366) {
+            if ($("window").width >= 768) {
                 $(this).css("background-attachment", "fixed")
             } else {
                 $(this).css("background-attachment", "scroll")
