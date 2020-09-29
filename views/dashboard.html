@@ -57,13 +57,16 @@
                                                 <button type="submit" class="btn btn-primary">Update</button>
                                             </form>
                                         </div>
+                                        <div class="card-footer">
+                                            <small>Last updated on <%= announcement.postedOn %> </small>
+                                        </div>
                                     </div>
                                     <div class="card bg-light text-dark">
                                         <div class="card-header">
                                             General
                                         </div>
                                         <div class="card-body">
-                                            <form action="/dashboard" method="POST">
+                                            <form action="/dashboard/teamInfo" method="POST" id="teamInfoForm">
                                                 <div class="form-group">
                                                     <label for="teamDesc">Team Description</label>
                                                     <textarea rows="8" class="form-control" id="teamDesc" name="teamDesc" required><%= team.desc %></textarea>
@@ -75,8 +78,42 @@
                                                 <button type="submit" class="btn btn-primary">Update</button>
                                             </form>
                                         </div>
+                                        <div class="card-footer">
+                                            <small>Last updated on <%= team.postedOn %> </small>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="py-3 text-light">
+                                    <h1>Robots</h1>
+                                    <div class="d-flex flex-wrap">
+                                        <% robots.forEach(function(robot) { %>
+                                        <div class="card bg-light text-dark mr-3 mb-3">
+                                            <div class="card-header">
+                                                <h4><%= robot.name %></h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <form action="/dashboard/robot/<%= robot.name %>" method="POST" class="currentMemberForm">
+                                                    <div class="form-group">
+                                                        <label for="<%= robot.name %>Name">Name</label>
+                                                        <input type="text" class="form-control" value="<%= robot.name %>" required name="<%= robot.name %>Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="<%= robot.name %>Year">Year</label>
+                                                        <input type="number" class="form-control" value="<%= robot.year %>" required name="<%= robot.name %>Year">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="<%= robot.name %>Desc">Description</label>
+                                                        <textarea class="form-control" id="<%= robot.name %>Desc" rows="8" placeholder="Describe <%= robot.name %>." name="currentMemberDesc" required><%= robot.desc %></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                    </div>
+                                </div>
+
                                 <div class="py-3 text-light">
                                     <h1>Members</h1>
                                     <p class="text-muted">You can only manage members in your division. <i>(For the time being)</i></p>
@@ -88,7 +125,7 @@
                                                 <h4> <%= member.name %> </h4>
                                             </div>
                                             <div class="card-body">
-                                                <form action="/dashboard" method="POST">
+                                                <form action="/dashboard/currentMember" method="POST" class="currentMemberForm">
                                                     <div class="form-group">
                                                         <label>Name</label>
                                                         <input type="text" class="form-control" placeholder="John Doe" value="<%= member.name %>" required name="currentMemberName">
@@ -166,7 +203,7 @@
                                                 <h4> New user </h4>
                                             </div>
                                             <div class="card-body">
-                                                <form action="/dashboard" method="POST">
+                                                <form action="/dashboard/newMember" method="POST" id="newMemberForm">
                                                     <div class="form-group">
                                                         <label>Name</label>
                                                         <input type="text" class="form-control" placeholder="John Doe" required name="newMemberName">
@@ -251,9 +288,6 @@
             <%- include('components/scripts.html'); -%>
             <script>
                 $("#announcementForm").submit(function (event) {
-
-                    console.log($("#announcementDisplay").is(":checked"))
-
                     event.preventDefault()
                     $.post($(this).attr("action"), {
                         title: $("#announcementTitle").val(),
@@ -266,6 +300,20 @@
                             $('.alert').removeClass("d-none")
                         }
                     }, "json")
+                })
+
+                $("#teamInfoForm").submit(function (event) {
+                    event.preventDefault()
+                    $.post($(this).attr("action"), {
+                        desc: $("#teamDesc").val(),
+                        history: $("#teamHistory").val(),
+                    }, function (data) {
+                        if (data.redirect) {
+                            window.location.replace(data.redirect)
+                        } else if (data.success) {
+                            $('.alert').removeClass("d-none")
+                        }
+                    })
                 })
 
                 function closeAlert() {
