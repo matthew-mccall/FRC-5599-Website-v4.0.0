@@ -21,6 +21,7 @@ const getData = async function (req, res) {
         user: req.session.user,
         team: JSON.parse(await asynclib.readFile('data/team.json')),
         announcement: JSON.parse(await asynclib.readFile('data/announcement.json')),
+        robots: (JSON.parse(await asynclib.readFile('data/robots.json'))).robots,
         members: await asynclib.queryDB({}, url, "userdb", "users")
     })
 }
@@ -45,6 +46,24 @@ dashboard.post('/announcement', function (req, res) {
         message: req.body.message,
         display: req.body.display == "true",
         postedOn: new Date().toDateString() //TODO: Account for localization? (Different timezones)
+    }), function (err) {
+        if (err) {
+            res.send({
+                success: false
+            })
+        } else {
+            res.send({
+                success: true
+            })
+        }
+    })
+})
+
+dashboard.post('/teamInfo', function (req, res) {
+    fs.writeFile('data/team.json', JSON.stringify({
+        desc: req.body.desc,
+        history: req.body.history,
+        postedOn: new Date().toDateString()
     }), function (err) {
         if (err) {
             res.send({
